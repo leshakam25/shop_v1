@@ -1,17 +1,28 @@
-import { NextResponse } from 'next/server';
+import {getProducts} from "../../../services/products";
+import {NextResponse} from "next/server";
 
-// export async function GET(req: Request) {
-//     const { searchParams } = new URL(req.url)
-//     const query = searchParams.get('q');
-//     let currentPosts = posts;
-//     if (query) {
-//         currentPosts = posts.filter(post => post.title.toLowerCase().includes(query.toLowerCase()))
-//     }
-//     return NextResponse.json(currentPosts)
-// }
+export async function GET(req: Request) {
+    try {
+        const {products, error} = await getProducts()
+        if (error) throw new Error(error)
+        return NextResponse.json(products)
+    } catch (error) {
+        throw new Error('Failed to stablish products')
+
+    }
+}
+
+// export const getAllProducts = async (req: Request, res: Response) => {
+//     if (req.method === 'GET') {
+//         try {
+//             const {products, error} = await getProducts()
+//             if (error) throw new Error(error)
 //
-// export async function POST(req: Request) {
-//     const body = await req.json()
-//     console.log(body)
-//     return NextResponse.json({ body })
+//             return res.status(200).json({products})
+//         } catch (error) {
+//             return res.status(500).json({error})
+//         }
+//     }
+//     res.setHeader('Allow', ['GET'])
+//     res.status(425).end(`Method ${req.method} is not supported`)
 // }
