@@ -1,8 +1,9 @@
 import clientPromise from "@/configs/mongo/index";
+import {ProductModel} from "@/models/product.model";
 
 let client
-let db
-let products
+let db:any
+let products:any
 
 async function init() {
     if (db) return
@@ -25,7 +26,7 @@ export async function getProducts() {
         const result = await products
             .find({})
             .limit(20)
-            .map(product => ({ ...product, _id: product._id.toString() }))
+            .map((product: ProductModel) => ({ ...product, _id: product._id.toString() }))
             .toArray()
 
         return {products: result}
