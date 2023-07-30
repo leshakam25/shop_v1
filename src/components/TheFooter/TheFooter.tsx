@@ -1,18 +1,22 @@
 import React from 'react';
-import {Box} from "@mui/material";
+import { Container} from "@mui/material";
 
 const TheFooter = () => {
     return (
         <footer>
-            <Box sx={{
-                height: 40,
+            <Container
+                maxWidth={false}
+                sx={{
+                height: 60,
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "space-around",
-                alignItems: "center"
+                justifyContent: "left",
+                alignItems: "center",
+                background:"lightyellow",
+
             }}>
-                TheFooter
-            </Box>
+                <h4>NextJS13 project</h4>
+            </Container>
         </footer>
     );
 };

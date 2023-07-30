@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box } from "@mui/material";
+import { Container} from "@mui/material";
 import NavButton from "@/components/Buttons/NavButton";
 
 const ProductNavBar = () => {
@@ -10,19 +10,22 @@ const ProductNavBar = () => {
     ]
 
     return (
-        <Box sx={{
-            height: 40,
+        <Container
+            maxWidth={false}
+            sx={{
+            height: 60,
             display: "flex",
             flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center"
+            justifyContent: "left",
+            alignItems: "center",
+            background:'lightblue'
         }}>
             {links.map((link) => {
                 return (
                    <NavButton key={link.label} link={link}/>
                 );
             })}
-        </Box>
+        </Container>
     );
 };
 

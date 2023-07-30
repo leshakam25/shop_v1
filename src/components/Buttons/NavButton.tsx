@@ -14,6 +14,7 @@ const NavButton = ({link}: any) => {
             <Button
                 variant={'contained'}
                 color={isActive ? "success" : "primary"}
+                sx={{m:0.4,minWidth:140}}
             >
                 {link.label}
             </Button>

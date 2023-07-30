@@ -1,19 +1,22 @@
 import React from 'react';
 import Navigation from "@/components/TheHeader/Navigation";
-import {Box} from "@mui/material";
+import { Container} from "@mui/material";
 
 const TheHeader = () => {
     return (
         <header>
-            <Box sx={{
-                height: 40,
+            <Container
+                maxWidth={false}
+                sx={{
+                height: 60,
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
+                justifyContent: "left",
+                alignItems: "center",
+                background:'lightgray'
             }}>
                 <Navigation/>
-            </Box>
+            </Container>
         </header>
     );
 };
