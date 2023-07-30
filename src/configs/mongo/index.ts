@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 
-const uri =
+const uri: string =
     'mongodb://' +
     process.env.MONGO_LOGIN +
     ':' +
