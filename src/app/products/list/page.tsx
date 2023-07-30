@@ -2,6 +2,7 @@ import React from 'react';
 import {Metadata} from "next";
 import {Box  } from "@mui/material";
 import ProductItem from "@/components/Products/ProductItem";
+import ProductsList from "@/components/Products/ProductsList";
 
 async function getProducts() {
     const response = await fetch("http://localhost:3000/api/products")
@@ -17,20 +18,8 @@ const Page = async () => {
     const products = await getProducts()
     return (
         <div>
-            <h2>List of products</h2>
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "left",
-                    alignItems: "center",
-
-                }}
-            >
-                {products && products.map((el: any) => (
-                    <ProductItem key={el._id} el={el}/>
-                ))}
-            </Box>
+            <h2>Список продуктов</h2>
+            <ProductsList products={products}/>
         </div>
     );
 };

@@ -6,7 +6,6 @@ const ProductNavBar = () => {
     const links = [
         {label: "Список", href: '/products/list'},
         {label: "Создать", href: '/products/create'},
-        {label: "Редактировать", href: '/products/edit'},
     ]
 
     return (
