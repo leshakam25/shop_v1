@@ -1,5 +1,4 @@
 import type {Metadata} from 'next'
-import {Container} from "@mui/material";
 import {Inter} from 'next/font/google'
 import "normalize.css"
 import TheHeader from "@/components/TheHeader/TheHeader";
@@ -16,11 +15,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <body className={inter.className}>
-        <Container maxWidth={false}>
             <TheHeader/>
-            {children}
+            <main>{children}</main>
             <TheFooter/>
-        </Container>
         </body>
         </html>
     )
