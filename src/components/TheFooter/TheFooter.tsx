@@ -13,7 +13,6 @@ const TheFooter = () => {
                 justifyContent: "left",
                 alignItems: "center",
                 background:"lightyellow",
-
             }}>
                 <h4>NextJS13 project</h4>
             </Container>

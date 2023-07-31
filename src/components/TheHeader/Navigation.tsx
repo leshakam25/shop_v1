@@ -2,7 +2,7 @@ import React from 'react';
 import NavButton from "@/components/Buttons/NavButton";
 
 const Navigation = () => {
-    const links = [
+    const links: { label: string, href: string }[]  = [
         {label: "Домой", href: '/'},
         {label: "Продукты", href: '/products'},
     ]

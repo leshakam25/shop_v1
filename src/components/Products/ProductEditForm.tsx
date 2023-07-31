@@ -1,20 +1,55 @@
 "use client"
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, Button, TextField} from "@mui/material";
+import {useRouter} from "next/navigation";
 
-const ProductCreateForm = () => {
+const ProductEditForm = ({id, label, description}: any) => {
+    const [newLabel, setNewLabel] = useState(label)
+    const [newDescription, setNewDescription] = useState(description)
+    const router = useRouter()
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        try {
+            const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({newLabel, newDescription})
+            })
+
+            if (!res.ok) {
+                throw new Error("Failed to update product")
+            }
+            router.push("/")
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <Box sx={{
                 display: "flex",
                 flexDirection: 'column',
-                maxWidth:600,
-                my:2,
-                gap:1
+                maxWidth: 600,
+                my: 2,
+                gap: 1
             }}>
-                <TextField variant={'filled'} placeholder={'Название'}/>
-                <TextField variant={'filled'} placeholder={'Описание'} multiline rows={4}/>
-                <Button variant={'contained'} color={'success'}>
+                <TextField
+                    value={newLabel}
+                    variant={'filled'}
+                    placeholder={'Название'}
+                    onChange={e => setNewLabel(e.target.value)}
+                />
+                <TextField
+                    value={newDescription}
+                    variant={'filled'}
+                    placeholder={'Описание'}
+                    onChange={e => setNewDescription(e.target.value)}
+                    multiline
+                    rows={4}
+                />
+                <Button type={"submit"} variant={'contained'} color={'success'}>
                     Обновить
                 </Button>
             </Box>
@@ -22,4 +57,4 @@ const ProductCreateForm = () => {
     );
 };
 
-export default ProductCreateForm;
+export default ProductEditForm;
