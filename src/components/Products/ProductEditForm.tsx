@@ -21,6 +21,7 @@ const ProductEditForm = ({id, label, description}: any) => {
             if (!res.ok) {
                 throw new Error("Failed to update product")
             }
+            router.refresh()
             router.push("/")
         } catch (error) {
             console.log(error)

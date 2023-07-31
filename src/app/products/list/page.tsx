@@ -28,7 +28,7 @@ const Page = async () => {
         return (
             <div>
                 <h2>Список продуктов</h2>
-                <ProductsList data={products.products}/>
+                {products && <ProductsList data={products.products}/>}
             </div>
         );
     }

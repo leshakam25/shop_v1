@@ -20,7 +20,7 @@ const ProductNavBar = () => {
                 alignItems: "center",
                 background: 'lightblue'
             }}>
-            {links.map((link) => {
+            {links && links.map((link) => {
                 return (
                     <NavButton key={link.label} link={link}/>
                 );
