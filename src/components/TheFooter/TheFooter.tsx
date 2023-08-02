@@ -7,8 +7,6 @@ const TheFooter = () => {
             <Container
                 maxWidth={false}
                 sx={{
-                    position: 'absolute',
-                    bottom: 0,
                     height: 60,
                     display: "flex",
                     flexDirection: "row",

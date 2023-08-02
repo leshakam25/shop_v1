@@ -1,5 +1,5 @@
 import React from 'react';
-import NavButton from "@/components/Buttons/NavButton";
+import ProductNavButton from "@/components/Products/ProductNavButton";
 import {ButtonGroup} from "@mui/material";
 
 const Navigation = () => {
@@ -17,7 +17,7 @@ const Navigation = () => {
             }}>
             {links && links.map((link) => {
                 return (
-                    <NavButton key={link.label} link={link}/>
+                    <ProductNavButton key={link.label} link={link}/>
                 );
             })}
         </ButtonGroup>

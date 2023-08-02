@@ -8,7 +8,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import {Button,  Tooltip} from "@mui/material";
 
-const NavButton = ({link}: any) => {
+const ProductNavButton = ({link}: any) => {
     const pathname = usePathname();
     const isActive = pathname === link.href;
 
@@ -35,4 +35,4 @@ const NavButton = ({link}: any) => {
     );
 };
 
-export default NavButton;
+export default ProductNavButton;

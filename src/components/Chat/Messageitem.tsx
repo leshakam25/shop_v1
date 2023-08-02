@@ -1,14 +1,14 @@
 "use client"
 import React from 'react';
 import {Box, Typography} from "@mui/material";
-import RemoveMessageButton from "@/components/Buttons/RemoveMessageButton";
+import MessageRemoveButton from "@/components/Chat/MessageRemoveButton";
 
 const MessageItem = ({message}:any) => {
     return (
         <Box
         sx={{
             background:'lightblue',
-            my:2,
+            mb:2,
             px:1,
             py:2,
             display: 'flex',
@@ -18,9 +18,9 @@ const MessageItem = ({message}:any) => {
         }}
         >
             <Typography variant={'h6'}>
-                {message.message}
+                {message.text}
             </Typography>
-            <RemoveMessageButton id={message.id}/>
+            <MessageRemoveButton id={message._id}/>
         </Box>
     );
 };

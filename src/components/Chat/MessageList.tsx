@@ -8,7 +8,7 @@ const MessageList = ({messages}: any) => {
         <Box sx={{
             overflow:'auto'
         }}>
-            {messages && messages.map((el: any, i: any) => <MessageItem key={i} message={el}/>)}
+            {messages && messages.map((el: any) => <MessageItem key={el._id} message={el}/>)}
         </Box>
     );
 };

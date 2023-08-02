@@ -3,9 +3,9 @@ import {IconButton} from "@mui/material";
 import Link from "next/link";
 import EditIcon from '@mui/icons-material/Edit';
 
-const EditButton = ({id}: any) => {
+const ProductEditButton = ({id}: any) => {
     return (
-        <Link href={`http://localhost:3000/products/edit/${id}`}>
+        <Link href={`/products/edit/${id}`}>
             <IconButton color={'primary'}>
               <EditIcon/>
             </IconButton>
@@ -13,4 +13,4 @@ const EditButton = ({id}: any) => {
     );
 };
 
-export default EditButton;
+export default ProductEditButton;

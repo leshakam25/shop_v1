@@ -13,6 +13,7 @@ const ProductsList = ({data}: any) => {
                 flexWrap: "wrap",
                 justifyContent: "left",
                 alignItems: "center",
+                overflow:'auto'
             }}
         >
             {products && products.map((el: any) => (

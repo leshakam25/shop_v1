@@ -2,15 +2,16 @@
 import React, {useState} from 'react';
 import {Box, Button, TextField} from "@mui/material";
 import {useRouter} from "next/navigation";
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context";
 
 const ProductEditForm = ({id, label, description}: any) => {
     const [newLabel, setNewLabel] = useState(label)
     const [newDescription, setNewDescription] = useState(description)
-    const router = useRouter()
-    const handleSubmit = async (e: any) => {
+    const router: AppRouterInstance = useRouter()
+    const handleSubmit = async (e: any): Promise<void> => {
         e.preventDefault();
         try {
-            const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+            const res: Response = await fetch(`/api/products/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -22,7 +23,7 @@ const ProductEditForm = ({id, label, description}: any) => {
                 throw new Error("Failed to update product")
             }
             router.refresh()
-            router.push("/")
+            router.push("/products/list/")
         } catch (error) {
             console.log(error)
         }

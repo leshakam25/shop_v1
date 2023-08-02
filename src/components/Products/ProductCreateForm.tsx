@@ -18,17 +18,17 @@ const ProductCreateForm = () => {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/products/", {
+            const res = await fetch("/api/products/", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify({label, description}),
-
             })
 
             if (res.ok) {
-                router.push('/products/list')
+                router.refresh()
+                router.push("/products/list/")
             } else {
                 throw new Error('Failed to create product')
             }

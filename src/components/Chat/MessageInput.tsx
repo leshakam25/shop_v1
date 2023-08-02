@@ -1,10 +1,44 @@
 "use client"
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, Button, TextField} from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+import {useRouter} from "next/navigation";
 
 const MessageInput = () => {
-    const handleSubmit = () => {
+    const [text, setText] = useState('')
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+
+        if (!text) {
+            alert("Text are required")
+            return
+        }
+
+        try {
+            const res = await fetch("/api/chat/", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({text}),
+
+            })
+
+            if (res.ok) {
+                router.refresh()
+                router.push("/chat")
+                setText('')
+            } else {
+                throw new Error('Failed to send message')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
     }
+
+
+    const router = useRouter()
 
     return (
         <form onSubmit={handleSubmit}>
@@ -17,18 +51,22 @@ const MessageInput = () => {
             }}
             >
                 <TextField
-                    size={'medium'}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
+                    value={text}
+                    size={'small'}
                     fullWidth
+                    variant={'filled'}
                     placeholder={'Введите сообщение'}
                 />
                 <Button
                     sx={{
-                        ml:1
+                        ml:1,
                     }}
+                    color={'success'}
                     size={'large'}
                     variant={'contained'}
                     type={"submit"}>
-                    Отправить
+                    <SendIcon/>
                 </Button>
             </Box>
         </form>

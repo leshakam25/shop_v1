@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 export default function ProductsLayout({children}: { children: React.ReactNode }) {
     return (
         <Container maxWidth={false} sx={{
-            height:'100vh',
             my: 2
         }}>
             {children}
