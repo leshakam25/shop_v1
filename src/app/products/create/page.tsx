@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const CreateProduct = () => {
     return (
         <div>
-            <h2>Создать продукт</h2>
+            <h2>Создать товар</h2>
             <ProductCreateForm/>
         </div>
     );

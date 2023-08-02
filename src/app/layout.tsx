@@ -8,7 +8,7 @@ const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
     title: 'Shop v1.0',
-    description: 'Created by nextjs',
+    description: 'Created by Nextjs',
 }
 
 export default function RootLayout({children}: { children: React.ReactNode }) {

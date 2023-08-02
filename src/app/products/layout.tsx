@@ -1,5 +1,4 @@
 import React from "react";
-import ProductNavBar from "@/components/Products/ProductNavBar";
 import {Metadata} from "next";
 import {Container} from "@mui/material";
 
@@ -10,11 +9,11 @@ export const metadata: Metadata = {
 
 export default function ProductsLayout({children}: { children: React.ReactNode }) {
     return (
-        <div>
-            <ProductNavBar/>
-            <Container maxWidth={false}>
-                {children}
-            </Container>
-        </div>
+        <Container maxWidth={false} sx={{
+            height:'100vh',
+            my: 2
+        }}>
+            {children}
+        </Container>
     );
 }
