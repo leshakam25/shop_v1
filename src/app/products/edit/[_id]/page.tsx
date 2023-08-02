@@ -23,7 +23,7 @@ const getProductById = async (_id: string) => {
     }
 }
 
-const EditProduct = async ({params}: Params): Promise<ReactElement> => {
+const EditProduct = async ({params}: any): Promise<ReactElement> => {
     const {_id} = params;
     const {product} = await getProductById(_id);
     const {label, description} = product;
