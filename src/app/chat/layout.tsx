@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ChatLayout({children}: { children: React.ReactNode }) {
     return (
-            <Container maxWidth={false} sx={{
+            <Container maxWidth={"md"} sx={{
                 my:2,
             }}>
                 {children}

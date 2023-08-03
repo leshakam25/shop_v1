@@ -6,7 +6,8 @@ import {Box} from "@mui/material";
 const MessageList = ({messages}: any) => {
     return (
         <Box sx={{
-            overflow:'auto'
+            overflow:'auto',
+            width:'100%'
         }}>
             {messages && messages.map((el: any) => <MessageItem key={el._id} message={el}/>)}
         </Box>

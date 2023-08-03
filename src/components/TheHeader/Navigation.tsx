@@ -17,24 +17,19 @@ const Navigation = () => {
         {label: "Чат", href: '/chat'},
     ]
 
-    const profile = {
-        userId: '1',
-        name: "Ivan",
-        email: "ivan@ivan.ivan"
-    }
 
     return (
         <Box>
             {links && links.map((link: { label: string, href: string }) => {
                 const isActive = pathname === link.href;
                 return (
-                    <Tooltip title={link.label}>
+                    <Tooltip key={link.label} title={link.label}>
                         <Link href={link.href}>
                             <Button variant={'contained'} color={isActive ? "success" : "primary"} sx={{mx:0.5}} size={'large'}>
-                                {link.label == "Домой" && <HouseIcon sx={{color: "white"}}/>}
-                                {link.label == "Список товаров" && <FormatListBulletedIcon sx={{color: "white"}}/>}
-                                {link.label == "Создать товар" && <AddCircleOutlineIcon sx={{color: "white"}}/>}
-                                {link.label == "Чат" && <QuestionAnswerIcon sx={{color: "white"}}/>}
+                                {link.label === "Домой" && <HouseIcon sx={{color: "white"}}/>}
+                                {link.label === "Список товаров" && <FormatListBulletedIcon sx={{color: "white"}}/>}
+                                {link.label === "Создать товар" && <AddCircleOutlineIcon sx={{color: "white"}}/>}
+                                {link.label === "Чат" && <QuestionAnswerIcon sx={{color: "white"}}/>}
                             </Button>
                         </Link>
                     </Tooltip>
