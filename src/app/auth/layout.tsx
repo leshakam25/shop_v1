@@ -3,7 +3,7 @@ import {Metadata} from "next";
 import {Container} from "@mui/material";
 
 export const metadata: Metadata = {
-    title: 'Auth | Shop v1.0',
+    title: 'Authorization | Shop v1.0',
     description: 'Authorization',
 }
 

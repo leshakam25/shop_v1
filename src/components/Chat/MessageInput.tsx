@@ -55,7 +55,7 @@ const MessageInput = () => {
                     value={text}
                     size={'small'}
                     fullWidth
-                    variant={'filled'}
+                    variant={'standard'}
                     placeholder={'Введите сообщение'}
                 />
                 <Button

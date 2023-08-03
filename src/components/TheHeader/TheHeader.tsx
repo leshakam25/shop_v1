@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from "@/components/TheHeader/Navigation";
 import { Container} from "@mui/material";
-import HeaderAuthBlock from "@/components/Auth/HeaderAuthBlock";
+import AuthBlock from "@/components/TheHeader/AuthBlock";
 import {ProfileInterface} from "@/interfaces/profile.interface";
 
 const profile: ProfileInterface = {
@@ -25,7 +25,9 @@ const TheHeader = () => {
                 background:'lightgray'
             }}>
                 <Navigation/>
-                <HeaderAuthBlock />
+                <AuthBlock
+                    profile={profile}
+                />
             </Container>
         </header>
     );
