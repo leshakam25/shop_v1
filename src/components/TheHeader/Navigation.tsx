@@ -9,6 +9,13 @@ const Navigation = () => {
         {label: "Создать товар", href: '/products/create'},
         {label: "Чат", href: '/chat'},
     ]
+
+    const profile = {
+        userId:'1',
+        name:"Ivan",
+        email: "ivan@ivan.ivan"
+    }
+
     return (
         <ButtonGroup
             variant={'contained'}
