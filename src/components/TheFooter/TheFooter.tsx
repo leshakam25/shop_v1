@@ -1,4 +1,3 @@
-import React from 'react';
 import FooterWrapper from "@/components/TheFooter/FooterWrapper";
 
 const TheFooter = () => {

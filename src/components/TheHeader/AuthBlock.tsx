@@ -35,7 +35,7 @@ const AuthBlock = () => {
                         </Button>
                     </Link>
                     <Button
-                        onClick={() => signOut()}
+                        onClick={() => signOut({ callbackUrl: process.env.NEXTAUTH_URL })}
                         size={'small'}
                         variant={'contained'}
                         color={'error'}
