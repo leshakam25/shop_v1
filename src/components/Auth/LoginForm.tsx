@@ -22,7 +22,7 @@ const LoginForm = () => {
                 redirect: false,
             });
 
-            if (!res) {
+            if (res?.error) {
                 setError("Invalid Credentials");
                 return;
             }
@@ -54,8 +54,7 @@ const LoginForm = () => {
                     placeholder={'Email'}
                     fullWidth
                     variant={'outlined'}
-                    size={'small'}
-                />
+                    size={'small'}/>
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     type={'password'}
@@ -63,30 +62,23 @@ const LoginForm = () => {
                     placeholder={'Password'}
                     fullWidth
                     variant={'outlined'}
-                    size={'small'}
-                />
+                    size={'small'}/>
                 <Button
                     type={"submit"}
                     fullWidth
                     variant={'contained'}
-                    color={'success'}
-                >
+                    color={'success'}>
                     LOGIN
                 </Button>
                 <Link href={`/auth/register/`}>
                     <Button
-                        sx={{
-                            width: {xs: '100vw', sm: '200px'},
-                        }}
+                        sx={{width: {xs: '100vw', sm: '200px'}}}
                         variant={'outlined'}
-                        color={'primary'}
-                    >
+                        color={'primary'}>
                         REGISTER
                     </Button>
                 </Link>
-                {error &&
-                    <Alert severity="error">{error}</Alert>
-                }
+                {error && <Alert severity="error">{error}</Alert>}
             </Box>
         </form>
     );

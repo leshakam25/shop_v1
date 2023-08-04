@@ -1,22 +1,21 @@
-import {AuthOptions} from "next-auth";
+import NextAuth, {AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import NextAuth from "next-auth";
 import bcrypt from "bcryptjs";
 import User from "@/schemas/user.schema";
 import {connectMongoDB} from "@/configs/mongo.config";
 
-const authOptions: AuthOptions = {
+export const authOptions: AuthOptions = {
     providers: [
         CredentialsProvider({
             name: "credentials",
             credentials: {},
 
             async authorize(credentials) {
-                const { email, password  } = credentials;
+                const {email, password}: any = credentials
 
                 try {
                     await connectMongoDB();
-                    const user = await User.findOne({ email });
+                    const user = await User.findOne({email});
 
                     if (!user) {
                         return null;

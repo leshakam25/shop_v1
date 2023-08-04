@@ -9,14 +9,16 @@ export const metadata: Metadata = {
 
 export default function ChatLayout({children}: { children: React.ReactNode }) {
     return (
+        <div>
             <Container maxWidth={false} sx={{
-                my:2,
-                display:'flex',
-                flexDirection:'column',
+                my: 2,
+                display: 'flex',
+                flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems:'center'
+                alignItems: 'center'
             }}>
                 {children}
             </Container>
+        </div>
     );
 }

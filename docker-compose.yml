@@ -1,10 +1,33 @@
 version: '3'
+
 services:
-  top.api:
-    image: lyo25/nest-test2:latest
-    container_name: nest-test
+  next-app:
+    container_name: lyo25/shop-v1:latest
+    build:
+      context: ./next-app
+      dockerfile: dev.Dockerfile
+
+    # Set environment variables directly in the docker-compose file
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+
+    # Set envrionment variables based on the .env file
+    env_file:
+      - .env
+    volumes:
+      - ./next-app/src:/app/src
+      - ./next-app/public:/app/public
     restart: always
     ports:
-      - "3000:3000"
-    volumes:
-      - ./.env:/home/server/docker/apps/app/.env
+      - 3000:3000
+    networks:
+      - my_network
+
+  # Add more containers below (nginx, postgres, etc.)
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  my_network:
+    external: true

@@ -4,7 +4,7 @@ import {Container} from "@mui/material";
 import Navigation from "@/components/TheHeader/Navigation";
 import AuthBlock from "@/components/TheHeader/AuthBlock";
 
-const HeaderWrapper = ({profile}: any) => {
+const HeaderWrapper = () => {
     return (
         <Container
             maxWidth={false}
@@ -17,7 +17,7 @@ const HeaderWrapper = ({profile}: any) => {
                 background: 'lightgray'
             }}>
             <Navigation/>
-            <AuthBlock profile={profile}/>
+            <AuthBlock/>
         </Container>
     );
 };
