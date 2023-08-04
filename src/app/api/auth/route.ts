@@ -12,6 +12,6 @@ export async function POST(req: any): Promise<any> {
 
         return NextResponse.json({message: "User registered successfully"}, {status: 201})
     } catch (error) {
-        return NextResponse.json({message: "An error occured"}, {status: 500})
+        return NextResponse.json({message: "An error occurred"}, {status: 500})
     }
 }

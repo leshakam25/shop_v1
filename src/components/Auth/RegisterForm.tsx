@@ -1,7 +1,8 @@
 "use client"
 import React, {useState} from 'react';
-import {Box, Button, TextField, Typography} from "@mui/material";
+import {Alert, Box, Button, TextField} from "@mui/material";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 
 const RegisterForm = () => {
@@ -9,6 +10,8 @@ const RegisterForm = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("")
+
+    const router = useRouter()
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()
@@ -18,6 +21,20 @@ const RegisterForm = () => {
             return
         }
         try {
+            const resUserExists = await fetch("/api/auth/userExists", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({email})
+            })
+
+            const {user} = await resUserExists.json()
+            if (user) {
+                setError("User already exists");
+                return
+            }
+
             const res = await fetch("/api/auth/", {
                 method: "POST",
                 headers: {
@@ -33,6 +50,7 @@ const RegisterForm = () => {
             if (res.ok) {
                 const form = e.target
                 form.reset();
+                router.push("/auth/login")
             } else {
                 console.log("Registration failed")
             }
@@ -57,6 +75,7 @@ const RegisterForm = () => {
             }}>
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                    type={'text'}
                     value={name}
                     placeholder={'Name'}
                     fullWidth
@@ -65,6 +84,7 @@ const RegisterForm = () => {
                 />
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    type={'email'}
                     value={email}
                     placeholder={'Email'}
                     fullWidth
@@ -73,6 +93,7 @@ const RegisterForm = () => {
                 />
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    type={'password'}
                     value={password}
                     placeholder={'Password'}
                     fullWidth
@@ -99,9 +120,7 @@ const RegisterForm = () => {
                     </Button>
                 </Link>
                 {error &&
-                    <Typography color={'error'}>
-                        {error}
-                    </Typography>
+                    <Alert severity="error">{error}</Alert>
                 }
             </Box>
         </form>

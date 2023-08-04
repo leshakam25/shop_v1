@@ -1,18 +1,38 @@
 "use client"
 import React, {useState} from 'react';
-import {Box, Button, TextField, Typography} from "@mui/material";
+import {Alert, Box, Button, TextField} from "@mui/material";
 import Link from "next/link";
+import {signIn, SignInResponse} from "next-auth/react";
+import {useRouter} from "next/navigation";
 
-
-
-const LoginForm =  () => {
-    const [name, setName] = useState<string>("")
+const LoginForm = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("")
 
-    const handleSubmit = (): void => {
-    }
+    const router = useRouter()
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+
+        try {
+            const res: SignInResponse | undefined = await signIn("credentials", {
+                email,
+                password,
+                redirect: false,
+            });
+
+            if (!res) {
+                setError("Invalid Credentials");
+                return;
+            }
+
+            router.replace("/");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <Box sx={{
@@ -28,15 +48,8 @@ const LoginForm =  () => {
                 borderRadius: 2
             }}>
                 <TextField
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-                    value={name}
-                    placeholder={'Name'}
-                    fullWidth
-                    variant={'outlined'}
-                    size={'small'}
-                />
-                <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    type={'email'}
                     value={email}
                     placeholder={'Email'}
                     fullWidth
@@ -45,6 +58,7 @@ const LoginForm =  () => {
                 />
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    type={'password'}
                     value={password}
                     placeholder={'Password'}
                     fullWidth
@@ -71,9 +85,7 @@ const LoginForm =  () => {
                     </Button>
                 </Link>
                 {error &&
-                    <Typography color={'error'}>
-                        {error}
-                    </Typography>
+                    <Alert severity="error">{error}</Alert>
                 }
             </Box>
         </form>

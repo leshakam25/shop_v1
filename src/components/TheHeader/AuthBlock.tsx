@@ -3,41 +3,43 @@ import React from 'react';
 import {Box, Button, Typography} from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from "next/link";
+import {signOut, useSession} from "next-auth/react";
 
-const AuthBlock = ({profile}: any) => {
+const AuthBlock = () => {
+    const {data: session} = useSession();
     return (
         <>
-            {!profile &&
+            {!session &&
                 <Link href={`/auth/login/`}>
                     <Button
                         variant={'contained'}
                         color={'success'}
+                        size={'small'}
                     >
                         <Typography>Login / Register</Typography>
                     </Button>
                 </Link>
             }
-            {profile &&
+            {session &&
                 <Box>
+                    <Link href={"/auth/dashboard"}>
+                        <Button
+                            variant={'contained'}
+                            color={'success'}
+                            size={'small'}
+                            sx={{m:0.5}}
+                        >
+                            <Typography variant={'body1'}>
+                                {session?.user?.name}
+                            </Typography>
+                        </Button>
+                    </Link>
                     <Button
+                        onClick={() => signOut()}
                         size={'small'}
                         variant={'contained'}
-                        color={'success'}
-                    >
-                        <Typography variant={'h6'} sx={{
-                            mr: 1
-                        }}>
-                            {profile.name}
-                        </Typography>
-                        <Typography variant={'body1'}>
-                            {profile.email}
-                        </Typography>
-                    </Button>
-                    <Button
-                        size={'large'}
-                        variant={'contained'}
                         color={'error'}
-                        sx={{ml: 2}}
+                        sx={{m:0.5}}
                     >
                         <LogoutIcon/>
                     </Button>

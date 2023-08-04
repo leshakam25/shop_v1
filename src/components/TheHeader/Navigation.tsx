@@ -25,7 +25,7 @@ const Navigation = () => {
                 return (
                     <Tooltip key={link.label} title={link.label}>
                         <Link href={link.href}>
-                            <Button variant={'contained'} color={isActive ? "success" : "primary"} sx={{mx:0.5}} size={'large'}>
+                            <Button variant={'contained'} color={isActive ? "success" : "primary"} sx={{m: 0.5}}>
                                 {link.label === "Домой" && <HouseIcon sx={{color: "white"}}/>}
                                 {link.label === "Список товаров" && <FormatListBulletedIcon sx={{color: "white"}}/>}
                                 {link.label === "Создать товар" && <AddCircleOutlineIcon sx={{color: "white"}}/>}
