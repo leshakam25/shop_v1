@@ -9,7 +9,7 @@ const HeaderWrapper = () => {
         <Container
             maxWidth={false}
             sx={{
-                height:{xs:100, sm:60},
+                height:'auto',
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",

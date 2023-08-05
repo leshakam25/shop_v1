@@ -5,9 +5,25 @@ import {NextResponse} from "next/server";
 //EDIT
 export async function PUT(request: any, {params}: any) {
     const {id} = params
-    const {newLabel: label, newDescription: description} = await request.json()
+    const {
+        newLabel: label,
+        newDescription: description,
+        newShortDesc: shortDesc,
+        newTags: tags,
+        newCurrentPrice: currentPrice,
+        newOldPrice: oldPrice,
+        newImage: image
+    } = await request.json()
     await connectMongoDB()
-    await Product.findByIdAndUpdate(id, {label, description})
+    await Product.findByIdAndUpdate(id, {
+        label,
+        description,
+        shortDesc,
+        tags,
+        currentPrice,
+        oldPrice,
+        image
+    })
     return NextResponse.json({message: "Product updated"}, {status: 200})
 }
 

@@ -4,9 +4,25 @@ import Product from "@/schemas/createProduct.schema";
 
 // CREATE
 export async function POST(request: any) {
-    const {label, description} = await request.json()
+    const {
+        label,
+        description,
+        shortDesc,
+        tags,
+        currentPrice,
+        oldPrice,
+        image
+    } = await request.json()
     await connectMongoDB()
-    await Product.create({label, description});
+    await Product.create({
+        label,
+        description,
+        shortDesc,
+        tags,
+        currentPrice,
+        oldPrice,
+        image
+    });
     return NextResponse.json({message: "Product created"}, {status: 201})
 }
 

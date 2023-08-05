@@ -51,7 +51,7 @@ const LoginForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     type={'email'}
                     value={email}
-                    placeholder={'Email'}
+                    label={'Email'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}/>
@@ -59,7 +59,7 @@ const LoginForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     type={'password'}
                     value={password}
-                    placeholder={'Password'}
+                    label={'Password'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}/>

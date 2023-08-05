@@ -77,7 +77,7 @@ const RegisterForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                     type={'text'}
                     value={name}
-                    placeholder={'Name'}
+                    label={'Name'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}
@@ -86,7 +86,7 @@ const RegisterForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     type={'email'}
                     value={email}
-                    placeholder={'Email'}
+                    label={'Email'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}
@@ -95,7 +95,7 @@ const RegisterForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     type={'password'}
                     value={password}
-                    placeholder={'Password'}
+                    label={'Password'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}

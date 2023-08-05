@@ -53,7 +53,6 @@ const MessageInput = () => {
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
                     value={text}
-                    size={'small'}
                     fullWidth
                     variant={'outlined'}
                     placeholder={'Введите сообщение'}
