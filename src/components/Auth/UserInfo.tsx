@@ -15,7 +15,7 @@ const UserInfo = () => {
                 alignItems: 'flex-start',
                 background: 'lightgray',
                 mt:2,
-                py: {xs: 1, sm: 2},
+                p: {xs: 1, sm: 2},
                 borderRadius: 1
             }}
         > {session &&
@@ -27,7 +27,7 @@ const UserInfo = () => {
                     alignItems: 'center'
                 }}>
                     <Typography variant={'h6'}>Имя:</Typography>
-                    <Typography variant={'h6'}>{session?.user?.name}</Typography>
+                    <Typography variant={'h5'}>{session?.user?.name}</Typography>
                 </Box>
                 <Box sx={{
                     display: 'flex',
@@ -36,7 +36,16 @@ const UserInfo = () => {
                     alignItems: 'center'
                 }}>
                     <Typography variant={'h6'}>Email:</Typography>
-                    <Typography variant={'h6'}>{session?.user?.email}</Typography>
+                    <Typography variant={'h5'}>{session?.user?.email}</Typography>
+                </Box>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Typography variant={'h6'}>Роль:</Typography>
+                    <Typography variant={'h5'}>{session?.user?.role}</Typography>
                 </Box>
             </>
         }

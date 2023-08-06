@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import {IconButton} from "@mui/material";
+import {IconButton, Tooltip} from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import {useRouter} from "next/navigation";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context";
@@ -15,14 +15,16 @@ const MessageRemoveButton = ({id}: any) => {
                 method: "DELETE"
             })
             if (res.ok) {
-                 router.refresh();
+                router.refresh();
             }
         }
     }
     return (
-        <IconButton onClick={removeMessage} color={'error'}>
-            <HighlightOffIcon/>
-        </IconButton>
+        <Tooltip title={'Удалить'}>
+            <IconButton onClick={removeMessage} color={'error'}>
+                <HighlightOffIcon/>
+            </IconButton>
+        </Tooltip>
     );
 };
 

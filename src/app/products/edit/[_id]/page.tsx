@@ -1,7 +1,6 @@
-import React, { ReactElement} from 'react';
+import React, {ReactElement} from 'react';
 import {Metadata} from "next";
 import ProductEditForm from "@/components/Products/ProductEditForm";
-import {Params} from "next/dist/shared/lib/router/utils/route-matcher";
 
 export const metadata: Metadata = {
     title: 'Edit product | Shop v1.0',
@@ -26,12 +25,7 @@ const getProductById = async (_id: string) => {
 const EditProduct = async ({params}: any): Promise<ReactElement> => {
     const {_id} = params;
     const {product} = await getProductById(_id);
-    return (
-        <div>
-            <h2>Редактирование продукта</h2>
-            <ProductEditForm product={product}/>
-        </div>
-    );
+    return <main><ProductEditForm product={product}/></main>
 };
 
 export default EditProduct;

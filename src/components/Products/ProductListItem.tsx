@@ -5,19 +5,16 @@ import ProductRemoveButton from "@/components/Products/ProductRemoveButton";
 import ProductEditButton from "@/components/Products/ProductEditButton";
 import ProductShowButton from "@/components/Products/ProductShowButton";
 
-const ProductItem = ({el}: any) => {
-
+const ProductListItem = ({el}: any) => {
     return (
         <Card key={el._id}
               sx={{
                   boxShadow: '0',
-                  border: '1px solid black',
+                  background: 'lightgray',
                   width: {
                       xs: "100%", md: "45%", lg: "30%",
                   },
-                  my: {xs: 1, sm: 2},
-                  mx: {xs: 0, sm: 2}
-
+                  mb: {xs: 1, sm: 3},
               }}>
             <CardHeader
                 title={el.label}
@@ -42,17 +39,9 @@ const ProductItem = ({el}: any) => {
                 <ProductShowButton id={el._id}/>
                 <ProductEditButton id={el._id}/>
                 <ProductRemoveButton id={el._id}/>
-                {/*<ExpandMore*/}
-                {/*    expand={expanded}*/}
-                {/*    onClick={handleExpandClick}*/}
-                {/*    aria-expanded={expanded}*/}
-                {/*    aria-label="show more"*/}
-                {/*>*/}
-                {/*    <ExpandMoreIcon />*/}
-                {/*</ExpandMore>*/}
             </CardActions>
         </Card>
     );
 };
 
-export default ProductItem;
+export default ProductListItem;

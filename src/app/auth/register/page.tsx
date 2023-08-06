@@ -7,12 +7,7 @@ import {redirect} from "next/navigation";
 const Page = async () => {
     const session = await getServerSession(authOptions)
     if(session) redirect("/auth/dashboard")
-    return (
-        <>
-            <h3>Зарегистрируйтесь</h3>
-            <RegisterForm/>
-        </>
-    );
+    return <main><RegisterForm/></main>
 };
 
 export default Page;

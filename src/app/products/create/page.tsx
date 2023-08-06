@@ -8,12 +8,7 @@ export const metadata: Metadata = {
 }
 
 const CreateProduct = () => {
-    return (
-        <div>
-            <h2>Создать товар</h2>
-            <ProductCreateForm/>
-        </div>
-    );
+    return <main><ProductCreateForm/></main>
 };
 
 export default CreateProduct;

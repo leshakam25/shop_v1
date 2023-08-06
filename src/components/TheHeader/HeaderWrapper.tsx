@@ -14,7 +14,8 @@ const HeaderWrapper = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                background: 'lightgray'
+                background: 'lightblue',
+                py:0.4
             }}>
             <Navigation/>
             <AuthBlock/>

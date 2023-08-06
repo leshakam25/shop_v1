@@ -1,10 +1,6 @@
-import React, { ReactElement} from 'react';
+import React, {ReactElement} from 'react';
 import {Metadata} from "next";
-import ProductEditForm from "@/components/Products/ProductEditForm";
-import {Params} from "next/dist/shared/lib/router/utils/route-matcher";
 import ProductShow from "@/components/Products/ProductShow";
-import ProductCreateForm from "@/components/Products/ProductCreateForm";
-import {ProductInterface} from "@/interfaces/product.interface";
 
 export const metadata: Metadata = {
     title: 'Show product | Shop v1.0',
@@ -29,12 +25,7 @@ const getProductById = async (_id: string) => {
 const ShowProduct = async ({params}: any): Promise<ReactElement> => {
     const {_id} = params;
     const {product}: any = await getProductById(_id);
-    return (
-        <div>
-            <h2>Просмотр товара</h2>
-            <ProductShow product={product}/>
-        </div>
-    );
+    return <main><ProductShow product={product}/></main>
 };
 
 export default ShowProduct;

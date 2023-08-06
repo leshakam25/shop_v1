@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: 'Products',
 }
 
-const getProducts = async ():Promise<any> => {
+const getProducts = async (): Promise<any> => {
     try {
         const res = await fetch("http://localhost:3000/api/products",
             {
@@ -25,12 +25,7 @@ const getProducts = async ():Promise<any> => {
 
 const Page = async () => {
         const products = await getProducts()
-        return (
-            <div>
-                <h2>Список товаров</h2>
-                {products && <ProductsList data={products.products}/>}
-            </div>
-        );
+        return <main><ProductsList data={products.products}/></main>
     }
 ;
 

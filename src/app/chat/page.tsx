@@ -1,6 +1,5 @@
 import React from 'react';
 import MessageList from "@/components/Chat/MessageList";
-import MessageInput from "@/components/Chat/MessageInput";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
@@ -27,13 +26,7 @@ const getMessages = async ():Promise<any> => {
 
 const Page = async () => {
     const messages = await getMessages()
-    return (
-        <>
-            <h2>Чат</h2>
-            {messages && <MessageList messages={messages.messages}/>}
-            <MessageInput/>
-        </>
-    );
+    return <main><MessageList messages={messages.messages}/></main>
 };
 
 export default Page;

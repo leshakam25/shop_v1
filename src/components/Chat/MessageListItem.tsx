@@ -3,11 +3,11 @@ import React from 'react';
 import {Box, Typography} from "@mui/material";
 import MessageRemoveButton from "@/components/Chat/MessageRemoveButton";
 
-const MessageItem = ({message}:any) => {
+const MessageListItem = ({message}:any) => {
     return (
         <Box
         sx={{
-            background:'lightblue',
+            background:'lightgray',
             mb:2,
             px:1,
             py:2,
@@ -15,6 +15,7 @@ const MessageItem = ({message}:any) => {
             flexDirection:'row',
             alignItems: 'center',
             justifyContent: 'space-between',
+            borderRadius: '8px',
         }}
         >
             <Typography variant={'h6'}>
@@ -25,4 +26,4 @@ const MessageItem = ({message}:any) => {
     );
 };
 
-export default MessageItem;
+export default MessageListItem;

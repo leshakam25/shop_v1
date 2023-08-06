@@ -1,7 +1,5 @@
+import HomePage from "@/components/HomePage/HomePage";
+
 export default function Home() {
-    return (
-        <main>
-            <h2>NextJS shop v1.0</h2>
-        </main>
-    )
+    return <main><HomePage/></main>
 }

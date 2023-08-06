@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import {IconButton} from "@mui/material";
+import {IconButton, Tooltip} from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import {useRouter} from "next/navigation";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context";
@@ -20,9 +20,11 @@ const ProductRemoveButton = ({id}: any) => {
         }
     }
     return (
-        <IconButton onClick={removeProduct} color={'error'}>
-            <HighlightOffIcon/>
-        </IconButton>
+        <Tooltip title={'Удалить'}>
+            <IconButton onClick={removeProduct} color={'error'}>
+                <HighlightOffIcon/>
+            </IconButton>
+        </Tooltip>
     );
 };
 

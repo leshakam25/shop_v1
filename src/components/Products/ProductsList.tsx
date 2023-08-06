@@ -1,25 +1,42 @@
 "use client"
 import React, {useState} from 'react';
-import {Box} from "@mui/material";
-import ProductItem from "@/components/Products/ProductItem";
+import {Box, Typography} from "@mui/material";
+import ProductListItem from "@/components/Products/ProductListItem";
+import ProductCreateButton from "@/components/Products/ProductCreateButton";
 
 const ProductsList = ({data}: any) => {
     const [products] = useState(data)
     return (
-        <Box
-            sx={{
+        <Box sx={{my:2}}>
+            <Box sx={{
                 display: "flex",
                 flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "left",
-                alignItems: "center",
-                overflow:'auto',
-            }}
-        >
-            {products && products.map((el: any) => (
-                <ProductItem key={el._id} el={el}/>
-            ))}
+                flexWrap: "nowrap",
+                justifyContent: "space-between",
+                alignItems: "center"
+            }}>
+                <Typography variant={'h3'}>
+                    Список товаров
+                </Typography>
+                <ProductCreateButton/>
+            </Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    overflow: 'auto',
+                    position: 'relative'
+                }}
+            >
+                {products && products.map((el: any) => (
+                    <ProductListItem key={el._id} el={el}/>
+                ))}
+            </Box>
         </Box>
+
     )
 }
 

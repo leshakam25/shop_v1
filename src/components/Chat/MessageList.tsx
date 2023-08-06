@@ -1,15 +1,19 @@
 "use client"
 import React from 'react';
-import MessageItem from "@/components/Chat/Messageitem";
-import {Box} from "@mui/material";
+import MessageListItem from "@/components/Chat/MessageListItem";
+import {Box, Typography} from "@mui/material";
+import MessageInput from "@/components/Chat/MessageInput";
 
 const MessageList = ({messages}: any) => {
     return (
         <Box sx={{
-            overflow:'auto',
-            width:'100%'
+            my: 2,
+            overflow: 'auto',
+            width: '100%'
         }}>
-            {messages && messages.map((el: any) => <MessageItem key={el._id} message={el}/>)}
+            <Typography variant={'h3'}>Чат</Typography>
+            {messages && messages.map((el: any) => <MessageListItem key={el._id} message={el}/>)}
+            <MessageInput/>
         </Box>
     );
 };

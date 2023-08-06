@@ -1,12 +1,17 @@
 "use client"
 import React from 'react';
-import {Box, CardMedia,  Typography} from "@mui/material";
+import {Box, CardMedia, Typography} from "@mui/material";
 
 const ProductShow = ({product}: any) => {
     return (
         <Box sx={{
             display: 'flex',
             flexDirection: {xs: 'column', sm: 'row'},
+            background: 'lightgray',
+            borderRadius: "8px",
+            maxWidth: 600,
+            m: '0 auto',
+            p: 2
         }}>
             <CardMedia
                 component="img"

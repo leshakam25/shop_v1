@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-import {Box, Button, TextField} from "@mui/material";
+import {Box, Button, TextField, Tooltip} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import {useRouter} from "next/navigation";
 
@@ -57,6 +57,7 @@ const MessageInput = () => {
                     variant={'outlined'}
                     placeholder={'Введите сообщение'}
                 />
+            <Tooltip title={'Отправить'}>
                 <Button
                     sx={{
                         ml:1,
@@ -67,6 +68,7 @@ const MessageInput = () => {
                     type={"submit"}>
                     <SendIcon/>
                 </Button>
+            </Tooltip>
             </Box>
         </form>
     );
