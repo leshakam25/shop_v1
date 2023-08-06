@@ -26,7 +26,7 @@ const getMessages = async ():Promise<any> => {
 
 const Page = async () => {
     const messages = await getMessages()
-    return <main><MessageList messages={messages.messages}/></main>
+    return <main> {messages &&<MessageList messages={messages.messages}/>}</main>
 };
 
 export default Page;

@@ -25,7 +25,7 @@ const getProducts = async (): Promise<any> => {
 
 const Page = async () => {
         const products = await getProducts()
-        return <main><ProductsList data={products.products}/></main>
+        return <main>{products && <ProductsList data={products.products}/>}</main>
     }
 ;
 
