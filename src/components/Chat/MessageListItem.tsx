@@ -10,7 +10,7 @@ const MessageListItem = ({message}:any) => {
             background:'lightgray',
             mb:2,
             px:1,
-            py:2,
+            py:1,
             display: 'flex',
             flexDirection:'row',
             alignItems: 'center',

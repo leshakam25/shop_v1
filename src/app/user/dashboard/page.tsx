@@ -1,4 +1,4 @@
-import UserInfo from "@/components/Auth/UserInfo";
+import UserInfo from "@/components/User/UserInfo";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
