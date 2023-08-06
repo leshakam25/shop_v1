@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 import {connectMongoDB} from "@/configs/mongo.config";
-import Product from "@/schemas/createProduct.schema";
+import Product from "@/schemas/product.schema";
 
 // CREATE
 export async function POST(request: any) {

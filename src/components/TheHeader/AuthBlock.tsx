@@ -13,8 +13,7 @@ const AuthBlock = () => {
                 <Link href={`/auth/login/`}>
                     <Button
                         variant={'contained'}
-                        color={'success'}
-                        size={'small'}
+                        color={"primary"}
                     >
                         <Typography>Login / Register</Typography>
                     </Button>
@@ -22,12 +21,11 @@ const AuthBlock = () => {
             }
             {session &&
                 <Box>
-                    <Link href={"/auth/dashboard"}>
+                    <Link href={"/use/dashboard"}>
                         <Button
                             variant={'contained'}
                             color={'success'}
-                            size={'small'}
-                            sx={{m:0.5}}
+                            sx={{m: 0.5}}
                         >
                             <Typography variant={'body1'}>
                                 {session?.user?.name}
@@ -35,11 +33,10 @@ const AuthBlock = () => {
                         </Button>
                     </Link>
                     <Button
-                        onClick={() => signOut({ callbackUrl: process.env.NEXTAUTH_URL })}
-                        size={'small'}
+                        onClick={() => signOut({callbackUrl: process.env.NEXTAUTH_URL})}
                         variant={'contained'}
                         color={'error'}
-                        sx={{m:0.5}}
+                        sx={{m: 0.5}}
                     >
                         <LogoutIcon/>
                     </Button>

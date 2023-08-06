@@ -4,6 +4,7 @@ import "normalize.css"
 import TheHeader from "@/components/TheHeader/TheHeader";
 import React from "react";
 import {AuthProvider} from "@/app/Providers";
+import {Container} from "@mui/material";
 // import TheFooter from "@/components/TheFooter/TheFooter";
 
 const inter = Inter({subsets: ['latin']})
@@ -19,9 +20,11 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <body className={inter.className}>
         <AuthProvider>
             <TheHeader/>
-            <main>
-                {children}
-            </main>
+            <Container maxWidth={"xl"}>
+                <main>
+                    {children}
+                </main>
+            </Container>
             {/*<TheFooter/>*/}
         </AuthProvider>
         </body>

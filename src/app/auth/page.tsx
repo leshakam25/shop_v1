@@ -1,5 +1,10 @@
 import React from 'react';
-import LoginForm from "@/components/Auth/LoginForm";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Authorization | Shop v1.0',
+    description: 'Authorization',
+}
 
 const Page = () => {
     return (

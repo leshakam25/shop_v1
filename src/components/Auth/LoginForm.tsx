@@ -43,8 +43,6 @@ const LoginForm = () => {
                 alignItems: 'center',
                 width: {xs: '100vw', sm: '200px'},
                 gap: 1,
-                background: {xs: 'none', sm: 'lightgray'},
-                p: {xs: 0, sm: 4},
                 borderRadius: 2
             }}>
                 <TextField

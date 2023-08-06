@@ -1,5 +1,3 @@
-import UserInfo from "@/components/Auth/UserInfo";
-
 export default function Home() {
     return (
         <main>

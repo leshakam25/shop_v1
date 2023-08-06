@@ -5,6 +5,7 @@ import HouseIcon from "@mui/icons-material/House";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import GroupsIcon from '@mui/icons-material/Groups';
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 
@@ -15,6 +16,7 @@ const Navigation = () => {
         {label: "Список товаров", href: '/products/list'},
         {label: "Создать товар", href: '/products/create'},
         {label: "Чат", href: '/chat'},
+        {label: "Список пользователей", href: '/user/list'},
     ]
 
 
@@ -30,6 +32,7 @@ const Navigation = () => {
                                 {link.label === "Список товаров" && <FormatListBulletedIcon sx={{color: "white"}}/>}
                                 {link.label === "Создать товар" && <AddCircleOutlineIcon sx={{color: "white"}}/>}
                                 {link.label === "Чат" && <QuestionAnswerIcon sx={{color: "white"}}/>}
+                                {link.label === "Список пользователей" && <GroupsIcon sx={{color: "white"}}/>}
                             </Button>
                         </Link>
                     </Tooltip>

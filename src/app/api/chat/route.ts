@@ -1,4 +1,4 @@
-import Message from "@/schemas/newMessage.schema";
+import Message from "@/schemas/message.schema";
 import {connectMongoDB} from "@/configs/mongo.config";
 import {NextResponse} from "next/server";
 

@@ -1,6 +1,7 @@
 export interface ProfileInterface {
-    userId: string;
+    _id: string;
     name: string;
-    password: string;
     email: string;
+    password: string;
+    role: string;
 }

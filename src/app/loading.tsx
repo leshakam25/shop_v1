@@ -1,5 +1,4 @@
-import {Box} from "@mui/material";
-// import loading from "@/assets/animations/loading.gif";
+import {Box, CardMedia} from "@mui/material";
 
 export default function LoadingApp() {
     return (
@@ -7,14 +6,15 @@ export default function LoadingApp() {
             height: '90vh',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
-
+            alignItems: 'center'
         }}>
-            loading
-            {/*<CardMedia*/}
-            {/*    component={'image'}*/}
-            {/*    src={loading}*/}
-            {/*/>*/}
+            <CardMedia component={'img'}
+                       sx={{
+                           width: "120px",
+                           height: '120px'
+                       }}
+                       src={"https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"}
+            />
         </Box>
     )
 }

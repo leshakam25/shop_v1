@@ -1,6 +1,4 @@
 import mongoose, {Schema} from "mongoose";
-import {ProductTag} from "@/interfaces/product.interface";
-
 
 const productSchema = new Schema(
     {

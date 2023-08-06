@@ -12,10 +12,9 @@ const UserInfo = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 background: 'lightgray',
-                width:{xs:'100%', sm:"400px"},
-                px: {xs: 0, sm: 8},
+                mt:2,
                 py: {xs: 1, sm: 2},
                 borderRadius: 1
             }}

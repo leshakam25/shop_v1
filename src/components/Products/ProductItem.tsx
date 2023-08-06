@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import {Box, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography} from "@mui/material";
+import {Card, CardActions, CardContent, CardHeader, CardMedia, Typography} from "@mui/material";
 import ProductRemoveButton from "@/components/Products/ProductRemoveButton";
 import ProductEditButton from "@/components/Products/ProductEditButton";
 import ProductShowButton from "@/components/Products/ProductShowButton";
@@ -10,12 +10,13 @@ const ProductItem = ({el}: any) => {
     return (
         <Card key={el._id}
               sx={{
-                  boxShadow: '5',
+                  boxShadow: '0',
+                  border: '1px solid black',
                   width: {
                       xs: "100%", md: "45%", lg: "30%",
                   },
-                  my: {xs:1,sm:2},
-                  mx: {xs:0,sm:2}
+                  my: {xs: 1, sm: 2},
+                  mx: {xs: 0, sm: 2}
 
               }}>
             <CardHeader
@@ -31,10 +32,10 @@ const ProductItem = ({el}: any) => {
             />
             <CardContent>
                 <Typography variant={"body1"}>
-                    {el.description}
+                    Стоимость: {el.currentPrice}
                 </Typography>
                 <Typography variant={"body1"}>
-                    Стоимость: {el.currentPrice}
+                    {el.description}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
