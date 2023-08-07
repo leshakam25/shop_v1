@@ -21,7 +21,7 @@ const RegisterForm = () => {
             return
         }
         try {
-            const resUserExists = await fetch("/api/auth/userExists", {
+            const resUserExists = await fetch("/api/auth/userExists/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

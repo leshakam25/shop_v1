@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const getMessages = async ():Promise<any> => {
     try {
-        const res = await fetch("http://localhost:3000/api/chat",
+        const res = await fetch(`/api/chat/`,
             {
                 // next: {revalidate: 60},
                 cache: "no-store"

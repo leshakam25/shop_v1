@@ -13,7 +13,8 @@ const ProductsList = ({data}: any) => {
                 flexDirection: "row",
                 flexWrap: "nowrap",
                 justifyContent: "space-between",
-                alignItems: "center"
+                alignItems: "center",
+                mb:2
             }}>
                 <Typography variant={'h4'}>
                     Товары

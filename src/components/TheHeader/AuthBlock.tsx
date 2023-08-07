@@ -10,7 +10,7 @@ const AuthBlock = () => {
         return (
             <>
                 {!session &&
-                    <Link href={`/auth/login/`}>
+                    <Link href={`http://localhost:3000/auth/login/`}>
                         <Tooltip title={"Авторизация"}>
                             <Button
                                 variant={'contained'}

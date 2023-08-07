@@ -3,7 +3,7 @@ import UserList from "@/components/User/UserList";
 
 const getUsers = async (): Promise<any> => {
     try {
-        const res = await fetch("http://localhost:3000/api/user",
+        const res = await fetch(`/api/user`,
             {
                 // next: {revalidate: 60},
                 cache: "no-store"
@@ -19,7 +19,7 @@ const getUsers = async (): Promise<any> => {
 
 const Page = async () => {
     const users = await getUsers()
-    return <UserList data={users.users}/>
+    return <main>{users && <UserList data={users.users}/>}</main>
 };
 
 export default Page;

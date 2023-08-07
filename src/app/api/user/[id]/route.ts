@@ -17,7 +17,7 @@ export async function PUT(request: any, {params}: any) {
     await User.findByIdAndUpdate(id, {
         name,
         email,
-        hashedPassword,
+        password: hashedPassword,
         role
     })
     return NextResponse.json({message: "User updated"}, {status: 200})
