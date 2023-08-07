@@ -1,10 +1,12 @@
 "use client"
-import React from 'react';
+import React, {useState} from 'react';
 import MessageListItem from "@/components/Chat/MessageListItem";
 import {Box, Typography} from "@mui/material";
 import MessageInput from "@/components/Chat/MessageInput";
 
-const MessageList = ({messages}: any) => {
+
+const MessageList = ({data}: any) => {
+    const [messages] = useState(data)
     return (
         <Box sx={{
             my: 2,

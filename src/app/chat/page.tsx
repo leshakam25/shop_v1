@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: 'Chat',
 }
 
-const getMessages = async ():Promise<any> => {
+const getMessages = async ():any => {
     try {
         const res = await fetch(`/api/chat/`,
             {
@@ -26,7 +26,7 @@ const getMessages = async ():Promise<any> => {
 
 const Page = async () => {
     const messages = await getMessages()
-    return <main> {messages &&<MessageList messages={messages.messages}/>}</main>
+    return <main> {messages &&<MessageList data={messages.messages}/>}</main>
 };
 
 export default Page;

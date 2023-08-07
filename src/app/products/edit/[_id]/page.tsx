@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const getProductById = async (_id: string) => {
     try {
-        const res = await fetch(`/api/products/${_id}`, {
+        const res = await fetch(`http://localhost:3000/api/products/${_id}`, {
             cache: 'no-store'
         })
 
@@ -25,7 +25,7 @@ const getProductById = async (_id: string) => {
 const EditProduct = async ({params}: any): Promise<ReactElement> => {
     const {_id} = params;
     const {product} = await getProductById(_id);
-    return <main><ProductEditForm product={product}/></main>
+    return <main>{product && <ProductEditForm product={product}/>}</main>
 };
 
 export default EditProduct;

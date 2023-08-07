@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const getProducts = async (): Promise<any> => {
     try {
-        const res = await fetch(`/api/products`,
+        const res = await fetch("http://localhost:3000/api/products",
             {
                 // next: {revalidate: 60},
                 cache: "no-store"

@@ -3,11 +3,12 @@ import React from 'react';
 import LoginForm from "@/components/Auth/LoginForm";
 import {getServerSession} from "next-auth";
 import {redirect} from "next/navigation";
-import {authOptions} from "@/utils/authOptions";
+import {getSession} from "next-auth/react";
+import {authOptions} from "@/lib/authOptions";
 
 const Page = async () => {
-    const session = await getServerSession(authOptions)
-    if (session) redirect(`/user/dashboard`)
+    // const session = await getSession(authOptions)
+    // if(session) redirect("/user/dashboard")
     return <main><LoginForm/></main>
 };
 

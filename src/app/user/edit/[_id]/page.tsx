@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const getUserById = async (_id: string) => {
     try {
-        const res = await fetch(`/api/user/${_id}`, {
+        const res = await fetch(`http://localhost:3000/api/user/${_id}`, {
             cache: 'no-store'
         })
 
