@@ -2,8 +2,9 @@ import React from 'react';
 import UserList from "@/components/User/UserList";
 
 const getUsers = async (): Promise<any> => {
+    const url = `${process.env.BASE_URL}/api/user`
     try {
-        const res = await fetch(`http://localhost:3000/api/user`,
+        const res = await fetch(url,
             {
                 // next: {revalidate: 60},
                 cache: "no-store"

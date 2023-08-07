@@ -39,7 +39,7 @@ const AuthBlock = () => {
                         </Link>
                         <Tooltip title={"Выйти"}>
                             <Button
-                                onClick={() => signOut({callbackUrl: process.env.NEXTAUTH_URL})}
+                                onClick={() => signOut({callbackUrl: process.env.BASE_URL})}
                                 variant={'contained'}
                                 color={'error'}
                                 sx={{m: 0.5}}

@@ -7,9 +7,10 @@ export const metadata: Metadata = {
     description: 'Chat',
 }
 
-const getMessages = async ():any => {
+const getMessages = async (): Promise<any> => {
+    const url = `${process.env.BASE_URL}/api/chat/`
     try {
-        const res = await fetch(`/api/chat/`,
+        const res = await fetch(url,
             {
                 // next: {revalidate: 60},
                 cache: "no-store"
@@ -26,7 +27,7 @@ const getMessages = async ():any => {
 
 const Page = async () => {
     const messages = await getMessages()
-    return <main> {messages &&<MessageList data={messages.messages}/>}</main>
+    return <main> {messages && <MessageList data={messages.messages}/>}</main>
 };
 
 export default Page;

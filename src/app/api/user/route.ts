@@ -12,7 +12,7 @@ export async function GET() {
 
 //DELETE ONE
 export async function DELETE(request: any) {
-    const id = request.nextUrl.searchParams.get("id");
+    const id: any[] = request.nextUrl.searchParams.get("id");
     await connectMongoDB();
     await User.findByIdAndDelete(id);
     return NextResponse.json({message: "User deleted"}, {status: 200})

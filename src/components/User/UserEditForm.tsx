@@ -6,7 +6,7 @@ import {Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField
 const UserEditForm = ({user}:any) => {
     const [newName, setNewName] = useState(user.name)
     const [newEmail, setNewEmail] = useState(user.email)
-    const [newPassword, setNewPassword] = useState(user.password)
+    const [newPassword, setNewPassword] = useState('')
     const [newRole, setNewRole] = useState(user.role)
     const [error] = useState('')
 

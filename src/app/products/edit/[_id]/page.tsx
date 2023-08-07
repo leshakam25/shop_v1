@@ -8,8 +8,9 @@ export const metadata: Metadata = {
 }
 
 const getProductById = async (_id: string) => {
+    const url = `${process.env.BASE_URL}/api/products/${_id}`
     try {
-        const res = await fetch(`http://localhost:3000/api/products/${_id}`, {
+        const res = await fetch(url, {
             cache: 'no-store'
         })
 

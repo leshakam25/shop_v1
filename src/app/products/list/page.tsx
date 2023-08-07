@@ -8,8 +8,9 @@ export const metadata: Metadata = {
 }
 
 const getProducts = async (): Promise<any> => {
+    const url = `${process.env.BASE_URL}/api/products/`
     try {
-        const res = await fetch("http://localhost:3000/api/products",
+        const res = await fetch(url,
             {
                 // next: {revalidate: 60},
                 cache: "no-store"
