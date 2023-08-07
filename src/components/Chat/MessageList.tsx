@@ -11,7 +11,7 @@ const MessageList = ({messages}: any) => {
             overflow: 'auto',
             width: '100%'
         }}>
-            <Typography variant={'h3'}>Чат</Typography>
+            <Typography variant={'h4'}>Чат</Typography>
             {messages && messages.map((el: any) => <MessageListItem key={el._id} message={el}/>)}
             <MessageInput/>
         </Box>

@@ -5,7 +5,7 @@ import {Box, Typography} from "@mui/material";
 const HomePage = () => {
     return (
         <Box sx={{my:2}}>
-            <Typography variant={'h3'}>HomePage</Typography>
+            <Typography variant={'h4'}>HomePage</Typography>
         </Box>
     );
 };

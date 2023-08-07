@@ -43,7 +43,8 @@ const RegisterForm = () => {
                 body: JSON.stringify({
                     name,
                     email,
-                    password
+                    password,
+                    role: "user"
                 })
             })
 

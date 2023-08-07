@@ -2,8 +2,9 @@
 import React from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 import UserRemoveButton from "@/components/User/UserRemoveButton";
+import UserEditButton from "@/components/User/UserEditButton";
 
-const UserListItem = ({user}: any) => {
+const UserListItem = ({el}: any) => {
     return (
         <Box sx={{
             display: 'flex',
@@ -11,6 +12,7 @@ const UserListItem = ({user}: any) => {
             alignItems: 'center',
             background: 'lightgray',
             p: 1,
+            mb:2,
             borderRadius: '8px',
             opacity: 0.9,
             ":hover": {
@@ -18,23 +20,24 @@ const UserListItem = ({user}: any) => {
             }
         }}>
             <Grid container>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
                     <Typography variant={'h6'}>
-                        Имя: {user.name}
+                        {el.name}
                     </Typography>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
                     <Typography variant={'h6'}>
-                        Почта: {user.email}
+                        {el.email}
                     </Typography>
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={3}>
                     <Typography variant={'h6'}>
-                        Роль: {user.role}
+                        {el.role}
                     </Typography>
                 </Grid>
             </Grid>
-            <UserRemoveButton/>
+            <UserEditButton id={el._id}/>
+            <UserRemoveButton id={el._id}/>
         </Box>
     );
 };

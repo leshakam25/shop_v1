@@ -1,4 +1,4 @@
-import mongoose, {models, Schema} from "mongoose";
+import mongoose, { Schema} from "mongoose";
 
 const userSchema = new Schema(
     {
@@ -14,11 +14,15 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        role: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,
     }
 )
 
-const User = models.User || mongoose.model('User', userSchema)
+const User = mongoose.models.User || mongoose.model('User', userSchema)
 export default User

@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-import {Box, Button, TextField} from "@mui/material";
+import {Box, Button, TextField, Typography} from "@mui/material";
 import {useRouter} from "next/navigation";
 
 const ProductCreateForm = () => {
@@ -60,6 +60,9 @@ const ProductCreateForm = () => {
                 my: 2,
                 gap: 1
             }}>
+                <Typography variant={'h5'}>
+                    Добавление товара
+                </Typography>
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLabel(e.target.value)}
                     value={label}

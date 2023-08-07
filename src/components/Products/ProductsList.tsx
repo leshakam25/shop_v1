@@ -15,8 +15,8 @@ const ProductsList = ({data}: any) => {
                 justifyContent: "space-between",
                 alignItems: "center"
             }}>
-                <Typography variant={'h3'}>
-                    Список товаров
+                <Typography variant={'h4'}>
+                    Товары
                 </Typography>
                 <ProductCreateButton/>
             </Box>
