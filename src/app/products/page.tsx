@@ -1,4 +1,4 @@
-mport React from 'react';
+import React from 'react';
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
@@ -6,12 +6,6 @@ export const metadata: Metadata = {
     description: 'Products',
 }
 
-const Page = () => {
-    return (
-        <div>
-          Products
-        </div>
-    );
-};
+const Page = () => {return <div>Products</div>};
 
 export default Page;
