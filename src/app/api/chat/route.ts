@@ -1,6 +1,6 @@
 import Message from "@/schemas/message.schema";
-import {connectMongoDB} from "@/configs/mongo.config";
 import {NextResponse} from "next/server";
+import {connectMongoDB} from "@/libs/mongodb";
 
 // CREATE
 export async function POST(request: any) {

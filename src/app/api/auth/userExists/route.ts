@@ -1,4 +1,4 @@
-import {connectMongoDB} from "@/configs/mongo.config";
+import {connectMongoDB} from "@/libs/mongodb";
 import User from "@/schemas/user.schema";
 import {NextResponse} from "next/server";
 

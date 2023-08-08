@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 const CreateProduct = () => {
-    return <main><ProductCreateForm/></main>
+    return <ProductCreateForm/>
 };
 
 export default CreateProduct;

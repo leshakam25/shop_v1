@@ -1,11 +1,29 @@
-"use client"
 import React, {useState} from 'react';
 import {Box, Typography} from "@mui/material";
 import ProductListItem from "@/components/Products/ProductListItem";
 import ProductCreateButton from "@/components/Products/ProductCreateButton";
 
-const ProductsList = ({data}: any) => {
-    const [products] = useState(data)
+
+const getProducts = async (): Promise<any> => {
+    const url = `${process.env.BASE_URL}/api/products/`
+    try {
+        const res = await fetch(url,
+            {
+                // next: {revalidate: 60},
+                cache: "no-store"
+            });
+        if (!res.ok) {
+            throw new Error("Failed to fetch")
+        }
+        return res.json()
+    } catch (error) {
+        console.log("Error loading products: ", error)
+    }
+}
+
+
+const ProductsList = async () => {
+    const products = await getProducts()
     return (
         <Box sx={{my:2}}>
             <Box sx={{
@@ -32,7 +50,7 @@ const ProductsList = ({data}: any) => {
                     position: 'relative'
                 }}
             >
-                {products && products.map((el: any) => (
+                {products && products.products.map((el: any) => (
                     <ProductListItem key={el._id} el={el}/>
                 ))}
             </Box>

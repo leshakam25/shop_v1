@@ -26,7 +26,7 @@ const getUserById = async (_id: string) => {
 const EditUser = async ({params}: any) => {
     const {_id} = params;
     const {user} = await getUserById(_id);
-    return <main><UserEditForm user={user}/></main>
+    return <>{user && <UserEditForm user={user}/>}</>
 };
 
 export default EditUser;

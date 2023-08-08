@@ -26,7 +26,7 @@ const getProductById = async (_id: string) => {
 const EditProduct = async ({params}: any): Promise<ReactElement> => {
     const {_id} = params;
     const {product} = await getProductById(_id);
-    return <main>{product && <ProductEditForm product={product}/>}</main>
+    return <>{product && <ProductEditForm product={product}/>}</>
 };
 
 export default EditProduct;

@@ -1,5 +1,5 @@
 import {NextResponse} from "next/server";
-import {connectMongoDB} from "@/configs/mongo.config";
+import {connectMongoDB} from "@/libs/mongodb";
 import Product from "@/schemas/product.schema";
 
 // CREATE
