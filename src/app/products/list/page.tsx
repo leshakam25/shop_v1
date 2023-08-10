@@ -15,9 +15,6 @@ const getProducts = async (): Promise<any> => {
                 // next: {revalidate: 60},
                 cache: "no-store"
             });
-        if (!res.ok) {
-            throw new Error("Failed to fetch")
-        }
         return res.json()
     } catch (error) {
         console.log("Error loading products: ", error)

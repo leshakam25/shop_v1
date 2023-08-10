@@ -21,15 +21,12 @@ const ProductListItem = ({el}: any) => {
                 subheader={el.price}
 
             />
-            {el.images && el.images.map((el: any, i:any) => (
-                <CardMedia
-                    key={i}
-                    component="img"
-                    height="120"
-                    image={el}
-                    alt="no image"
-                />
-            ))}
+            <CardMedia
+                component="img"
+                height="120"
+                image={el.images[0]}
+                alt="no image"
+            />
             <CardContent>
                 <Typography variant={"body1"}>
                     {el.desc}

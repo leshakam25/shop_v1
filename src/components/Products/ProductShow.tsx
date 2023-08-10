@@ -6,14 +6,32 @@ const ProductShow = ({product}: any) => {
     return (
         <Box sx={{
             display: 'flex',
-            flexDirection: {xs: 'column', sm: 'row'},
+            flexDirection: 'column',
             background: 'lightgray',
             borderRadius: "8px",
-            maxWidth: 600,
-            m: '0 auto',
+            my:4,
             p: 2
         }}>
-            {product.images && product.images((el: any, i: any) => (
+
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
+                <Typography variant={'h5'}>
+                    Название: {product.title}
+                </Typography>
+                <Typography variant={'body1'}>
+                    Цена:{product.price}
+                </Typography>
+                <Typography variant={'body1'}>
+                    Описание: {product.desc}
+                </Typography>
+            </Box>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+            }}>
+            {product.images && product.images.map((el: any, i: any) => (
                 <CardMedia
                     key={i}
                     component="img"
@@ -27,20 +45,6 @@ const ProductShow = ({product}: any) => {
                     }}
                 />
             ))}
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                ml: {xs: 0, sm: 2}
-            }}>
-                <Typography variant={'h5'}>
-                    Название: {product.title}
-                </Typography>
-                <Typography variant={'body1'}>
-                    Цена:{product.price}
-                </Typography>
-                <Typography variant={'body1'}>
-                    Описание: {product.desc}
-                </Typography>
             </Box>
         </Box>
     );

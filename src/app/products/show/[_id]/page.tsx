@@ -14,11 +14,6 @@ const getProductById = async (_id: string) => {
         const res = await fetch(url, {
             cache: 'no-store'
         })
-
-        if (!res.ok) {
-            throw new Error("Failed to fetch topic")
-        }
-
         return res.json()
     } catch (error) {
         console.log(error)
@@ -27,11 +22,7 @@ const getProductById = async (_id: string) => {
 
 const ShowProduct = async ({params}: Params) => {
     const {_id} = params;
-    console.log(_id,'_id')
-
-    const {product}: any = await getProductById(_id);
-    console.log(product,'product')
-
+    const product: any = await getProductById(_id);
     return <>{product && <ProductShow product={product}/>}</>
 };
 
