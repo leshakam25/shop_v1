@@ -14,50 +14,51 @@ const UserCreateForm = () => {
 
 
     const handleSubmit = async (e: any) => {
-        // e.preventDefault()
-        //
-        // if (!name || !email || !password ||!role) {
-        //     setError("Заполните поля")
-        //     return
-        // }
-        // try {
-        //     const resUserExists = await fetch("/api/auth/userExists", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify({email})
-        //     })
-        //
-        //     const {user} = await resUserExists.json()
-        //     if (user) {
-        //         setError("User already exists");
-        //         return
-        //     }
-        //
-        //     const res = await fetch("/api/auth/", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify({
-        //             name,
-        //             email,
-        //             password,
-        //             role
-        //         })
-        //     })
-        //
-        //     if (res.ok) {
-        //         const form = e.target
-        //         form.reset();
-        //         router.push("/user/list")
-        //     } else {
-        //         console.log("Registration failed")
-        //     }
-        // } catch (error) {
-        //     console.log("Registration failed", error)
-        // }
+        e.preventDefault()
+
+        if (!name || !email || !password || !role) {
+            setError("Заполните поля")
+            return
+        }
+        try {
+            // const resUserExists = await fetch("/api/auth/userExists", {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     },
+            //     body: JSON.stringify({email})
+            // })
+            //
+            // const {user} = await resUserExists.json()
+            // if (user) {
+            //     setError("User already exists");
+            //     return
+            // }
+
+            const res = await fetch("http://localhost:4000/user/create/", {
+                mode: "no-cors",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    role
+                })
+            })
+
+            if (res.ok) {
+                const form = e.target
+                form.reset();
+                router.push("/user/list")
+            } else {
+                console.log("Registration failed")
+            }
+        } catch (error) {
+            console.log("Registration failed", error)
+        }
     }
 
     return (
@@ -101,8 +102,9 @@ const UserCreateForm = () => {
                         label={"Роль"}
                         onChange={(e) => setRole(e.target.value)}
                     >
-                        <MenuItem value={'admin'}>Администратор</MenuItem>
-                        <MenuItem value={'user'}>Пользователь</MenuItem>
+                        <MenuItem value={'ADMIN'}>Администратор</MenuItem>
+                        <MenuItem value={'USER'}>Пользователь</MenuItem>
+                        <MenuItem value={'MANAGER'}>Манагер</MenuItem>
                     </Select>
                 </FormControl>
                 <Button
@@ -113,9 +115,7 @@ const UserCreateForm = () => {
                     fullWidth>
                     Добавить
                 </Button>
-                {error &&
-                    <Alert severity="error">{error}</Alert>
-                }
+                {error && <Alert severity="error">{error}</Alert>}
             </Box>
         </form>
     );

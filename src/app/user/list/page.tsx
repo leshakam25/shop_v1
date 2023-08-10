@@ -1,28 +1,37 @@
 import React from 'react';
 import UserList from "@/components/User/UserList";
+import {Metadata} from "next";
 
-// const getUsers = async (): Promise<any> => {
-//     const url = `${process.env.BASE_URL}/api/user`
-//     try {
-//         const res = await fetch(url,
-//             {
-//                 // next: {revalidate: 60},
-//                 cache: "no-store"
-//             });
-//         if (!res.ok) {
-//             throw new Error("Failed to fetch")
-//         }
-//         return res.json()
-//     } catch (error) {
-//         console.log("Error loading products: ", error)
-//     }
-// }
+export const metadata: Metadata = {
+    title: 'User`s list | Shop v1.0',
+    description: 'User',
+}
+
+
+const getUsers = async (): Promise<any> => {
+    const url = "http://localhost:4000/user/getAll/"
+    try {
+        const res = await fetch(url,
+            {
+                // next: {revalidate: 60},
+                cache: "no-store"
+            });
+        if (!res.ok) {
+            throw new Error("Failed to fetch")
+        }
+        return res.json()
+    } catch (error) {
+        console.log("Error loading products: ", error)
+    }
+}
 
 const Page = async () => {
-    // const users = await getUsers()
-
-    return
-    // (<>{users && <UserList data={users.users}/>}</>)
+    const users = await getUsers()
+    return (
+        <>
+            {users && <UserList data={users}/>}
+        </>
+    )
 };
 
 export default Page;
