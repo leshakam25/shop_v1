@@ -13,24 +13,24 @@ const LoginForm = () => {
     const router = useRouter()
 
     const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
-        try {
-            const res: SignInResponse | undefined = await signIn("credentials", {
-                email,
-                password,
-                redirect: false,
-            });
-
-            if (res?.error) {
-                setError("Invalid Credentials");
-                return;
-            }
-
-            router.replace("/");
-        } catch (error) {
-            console.log(error);
-        }
+        // e.preventDefault();
+        //
+        // try {
+        //     const res: SignInResponse | undefined = await signIn("credentials", {
+        //         email,
+        //         password,
+        //         redirect: false,
+        //     });
+        //
+        //     if (res?.error) {
+        //         setError("Invalid Credentials");
+        //         return;
+        //     }
+        //
+        //     router.replace("/");
+        // } catch (error) {
+        //     console.log(error);
+        // }
     };
 
     return (

@@ -14,50 +14,50 @@ const UserCreateForm = () => {
 
 
     const handleSubmit = async (e: any) => {
-        e.preventDefault()
-
-        if (!name || !email || !password ||!role) {
-            setError("Заполните поля")
-            return
-        }
-        try {
-            const resUserExists = await fetch("/api/auth/userExists", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({email})
-            })
-
-            const {user} = await resUserExists.json()
-            if (user) {
-                setError("User already exists");
-                return
-            }
-
-            const res = await fetch("/api/auth/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password,
-                    role
-                })
-            })
-
-            if (res.ok) {
-                const form = e.target
-                form.reset();
-                router.push("/user/list")
-            } else {
-                console.log("Registration failed")
-            }
-        } catch (error) {
-            console.log("Registration failed", error)
-        }
+        // e.preventDefault()
+        //
+        // if (!name || !email || !password ||!role) {
+        //     setError("Заполните поля")
+        //     return
+        // }
+        // try {
+        //     const resUserExists = await fetch("/api/auth/userExists", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({email})
+        //     })
+        //
+        //     const {user} = await resUserExists.json()
+        //     if (user) {
+        //         setError("User already exists");
+        //         return
+        //     }
+        //
+        //     const res = await fetch("/api/auth/", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             name,
+        //             email,
+        //             password,
+        //             role
+        //         })
+        //     })
+        //
+        //     if (res.ok) {
+        //         const form = e.target
+        //         form.reset();
+        //         router.push("/user/list")
+        //     } else {
+        //         console.log("Registration failed")
+        //     }
+        // } catch (error) {
+        //     console.log("Registration failed", error)
+        // }
     }
 
     return (

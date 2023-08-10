@@ -7,26 +7,27 @@ export const metadata: Metadata = {
     description: 'User',
 }
 
-const getUserById = async (_id: string) => {
-    const url = `${process.env.BASE_URL}/api/user/${_id}`
-    try {
-        const res = await fetch(url, {
-            cache: 'no-store'
-        })
-
-        if (!res.ok) {
-            throw new Error("Failed to fetch user")
-        }
-        return res.json()
-    } catch (error) {
-        console.log(error)
-    }
-}
+// const getUserById = async (_id: string) => {
+//     const url = `${process.env.BASE_URL}/api/user/${_id}`
+//     try {
+//         const res = await fetch(url, {
+//             cache: 'no-store'
+//         })
+//
+//         if (!res.ok) {
+//             throw new Error("Failed to fetch user")
+//         }
+//         return res.json()
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
 const EditUser = async ({params}: any) => {
-    const {_id} = params;
-    const {user} = await getUserById(_id);
-    return <>{user && <UserEditForm user={user}/>}</>
+    // const {_id} = params;
+    // const {user} = await getUserById(_id);
+    return
+    // <>{user && <UserEditForm user={user}/>}</>
 };
 
 export default EditUser;

@@ -15,39 +15,39 @@ const ProductCreateForm = () => {
     const router = useRouter()
 
     const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
-        if (!label || !description || !currentPrice) {
-            alert("Title, description, price are required")
-            return
-        }
-
-        try {
-            const res = await fetch("/api/products/", {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    label,
-                    description,
-                    shortDesc,
-                    tags,
-                    currentPrice,
-                    oldPrice,
-                    image
-                }),
-            })
-
-            if (res.ok) {
-                router.refresh()
-                router.push("/products/list/")
-            } else {
-                throw new Error('Failed to create product')
-            }
-        } catch (error) {
-            console.log(error)
-        }
+        // e.preventDefault();
+        //
+        // if (!label || !description || !currentPrice) {
+        //     alert("Title, description, price are required")
+        //     return
+        // }
+        //
+        // try {
+        //     const res = await fetch("/api/products/", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             label,
+        //             description,
+        //             shortDesc,
+        //             tags,
+        //             currentPrice,
+        //             oldPrice,
+        //             image
+        //         }),
+        //     })
+        //
+        //     if (res.ok) {
+        //         router.refresh()
+        //         router.push("/products/list/")
+        //     } else {
+        //         throw new Error('Failed to create product')
+        //     }
+        // } catch (error) {
+        //     console.log(error)
+        // }
 
     }
 

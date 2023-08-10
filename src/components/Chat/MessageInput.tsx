@@ -7,33 +7,33 @@ import {useRouter} from "next/navigation";
 const MessageInput = () => {
     const [text, setText] = useState('')
     const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
-        if (!text) {
-            alert("Text are required")
-            return
-        }
-
-        try {
-            const res = await fetch("/api/chat/", {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({text}),
-
-            })
-
-            if (res.ok) {
-                router.refresh()
-                router.push("/chat")
-                setText('')
-            } else {
-                throw new Error('Failed to send message')
-            }
-        } catch (error) {
-            console.log(error)
-        }
+        // e.preventDefault();
+        //
+        // if (!text) {
+        //     alert("Text are required")
+        //     return
+        // }
+        //
+        // try {
+        //     const res = await fetch("/api/chat/", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-type": "application/json"
+        //         },
+        //         body: JSON.stringify({text}),
+        //
+        //     })
+        //
+        //     if (res.ok) {
+        //         router.refresh()
+        //         router.push("/chat")
+        //         setText('')
+        //     } else {
+        //         throw new Error('Failed to send message')
+        //     }
+        // } catch (error) {
+        //     console.log(error)
+        // }
 
     }
 

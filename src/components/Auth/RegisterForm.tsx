@@ -14,50 +14,50 @@ const RegisterForm = () => {
     const router = useRouter()
 
     const handleSubmit = async (e: any) => {
-        e.preventDefault()
-
-        if (!name || !email || !password) {
-            setError("Заполните поля")
-            return
-        }
-        try {
-            const resUserExists = await fetch("/api/auth/userExists/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({email})
-            })
-
-            const {user} = await resUserExists.json()
-            if (user) {
-                setError("User already exists");
-                return
-            }
-
-            const res = await fetch("/api/auth/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password,
-                    role: "user"
-                })
-            })
-
-            if (res.ok) {
-                const form = e.target
-                form.reset();
-                router.push("/auth/login")
-            } else {
-                console.log("Registration failed")
-            }
-        } catch (error) {
-            console.log("Registration failed", error)
-        }
+        // e.preventDefault()
+        //
+        // if (!name || !email || !password) {
+        //     setError("Заполните поля")
+        //     return
+        // }
+        // try {
+        //     const resUserExists = await fetch("/api/auth/userExists/", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({email})
+        //     })
+        //
+        //     const {user} = await resUserExists.json()
+        //     if (user) {
+        //         setError("User already exists");
+        //         return
+        //     }
+        //
+        //     const res = await fetch("/api/auth/", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             name,
+        //             email,
+        //             password,
+        //             role: "user"
+        //         })
+        //     })
+        //
+        //     if (res.ok) {
+        //         const form = e.target
+        //         form.reset();
+        //         router.push("/auth/login")
+        //     } else {
+        //         console.log("Registration failed")
+        //     }
+        // } catch (error) {
+        //     console.log("Registration failed", error)
+        // }
     }
 
     return (

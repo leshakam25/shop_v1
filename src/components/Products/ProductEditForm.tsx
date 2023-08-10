@@ -13,33 +13,33 @@ const ProductEditForm = ({product}: any) => {
     const [newOldPrice, setNewOldPrice] = useState(product.oldPrice)
     const [newImage, setNewImage] = useState(product.image)
 
-    const router: AppRouterInstance = useRouter()
+    // const router: AppRouterInstance = useRouter()
     const handleSubmit = async (e: any): Promise<void> => {
-        e.preventDefault();
-        try {
-            const res: Response = await fetch(`/api/products/${product._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    newLabel,
-                    newDescription,
-                    newShortDesc,
-                    newTags,
-                    newCurrentPrice,
-                    newOldPrice,
-                    newImage})
-            })
-
-            if (!res.ok) {
-                throw new Error("Failed to update product")
-            }
-            router.refresh()
-            router.push("/products/list/")
-        } catch (error) {
-            console.log(error)
-        }
+        // e.preventDefault();
+        // try {
+        //     const res: Response = await fetch(`/api/products/${product._id}`, {
+        //         method: "PUT",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             newLabel,
+        //             newDescription,
+        //             newShortDesc,
+        //             newTags,
+        //             newCurrentPrice,
+        //             newOldPrice,
+        //             newImage})
+        //     })
+        //
+        //     if (!res.ok) {
+        //         throw new Error("Failed to update product")
+        //     }
+        //     router.refresh()
+        //     router.push("/products/list/")
+        // } catch (error) {
+        //     console.log(error)
+        // }
     }
     return (
         <form onSubmit={handleSubmit}>
