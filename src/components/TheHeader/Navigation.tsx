@@ -14,7 +14,6 @@ const Navigation = () => {
         {label: "Домой", href: '/'},
         {label: "Список товаров", href: '/products/list'},
         {label: "Список пользователей", href: '/user/list'},
-        {label: "Чат", href: '/chat'},
     ]
 
 

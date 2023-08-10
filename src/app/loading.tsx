@@ -1,20 +1,3 @@
-import {Box, CardMedia} from "@mui/material";
+import Loading from "@/components/Loading/Loading";
 
-export default function LoadingApp() {
-    return (
-        <Box sx={{
-            height: '90vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <CardMedia component={'img'}
-                       sx={{
-                           width: "120px",
-                           height: '120px'
-                       }}
-                       src={"https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"}
-            />
-        </Box>
-    )
-}
+export default function LoadingApp() {return <Loading/>}

@@ -13,48 +13,33 @@ const ProductShow = ({product}: any) => {
             m: '0 auto',
             p: 2
         }}>
-            <CardMedia
-                component="img"
-                image={product.image}
-                alt="no image"
-                sx={{
-                    boxShadow: 2,
-                    borderRadius: '8px',
-                    width: {xs: "100%", sm: "300px"},
-                    height: {xs: '200px', sm: "300px"}
-                }}
-            />
+            {product.images && product.images((el: any, i: any) => (
+                <CardMedia
+                    key={i}
+                    component="img"
+                    image={el}
+                    alt="no image"
+                    sx={{
+                        boxShadow: 2,
+                        borderRadius: '8px',
+                        width: {xs: "100%", sm: "300px"},
+                        height: {xs: '200px', sm: "300px"}
+                    }}
+                />
+            ))}
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 ml: {xs: 0, sm: 2}
             }}>
                 <Typography variant={'h5'}>
-                    Название: {product.label}
+                    Название: {product.title}
                 </Typography>
                 <Typography variant={'body1'}>
-                    Краткое описание: {product.shortDesc}
-                </Typography>
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center'
-                }}>
-                    <Typography variant={'body1'}>
-                        Тэги:
-                    </Typography>
-                    {/*{product && product.tags && product.tags.map((el: string, i: any) => (*/}
-                    {/*    <Chip sx={{mx: 0.4}} key={i} label={el}/>*/}
-                    {/*))}*/}
-                </Box>
-                <Typography variant={'body1'}>
-                    Цена:{product.currentPrice}
+                    Цена:{product.price}
                 </Typography>
                 <Typography variant={'body1'}>
-                    Старая цена: {product.oldPrice}
-                </Typography>
-                <Typography variant={'body1'}>
-                    Описание: {product.description}
+                    Описание: {product.desc}
                 </Typography>
             </Box>
         </Box>

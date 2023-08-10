@@ -26,7 +26,7 @@ const ProductsList = ({data}: any) => {
                     display: "flex",
                     flexDirection: "row",
                     flexWrap: "wrap",
-                    justifyContent: "space-between",
+                    justifyContent: "left",
                     alignItems: "center",
                     overflow: 'auto',
                     position: 'relative'
