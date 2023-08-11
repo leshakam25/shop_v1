@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import {useRouter} from "next/navigation";
 import {Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context";
 
 const UserEditForm = ({user}:any) => {
     const [newName, setNewName] = useState(user.name)
@@ -10,29 +11,22 @@ const UserEditForm = ({user}:any) => {
     const [newRole, setNewRole] = useState(user.role)
     const [error] = useState('')
 
-    const router = useRouter()
-
-
+    const router: AppRouterInstance = useRouter()
     const handleSubmit = async (e: any): Promise<void> => {
         e.preventDefault();
         try {
-            const user = {
-                newName,
-                newEmail,
-                newPassword,
-                newRole
-            }
-            const res = await fetch("http://212.60.20.190:4000/user", {
+            const res = await fetch(`${process.env.BASE_URL}/user/${user._id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(user)
+                body: JSON.stringify({
+                    name: newName,
+                    email: newEmail,
+                    password: newPassword,
+                    role: newRole
+                })
             })
-
-            if (!res.ok) {
-                throw new Error("Failed to update product")
-            }
             router.refresh()
             router.push("/user/list/")
         } catch (error) {
