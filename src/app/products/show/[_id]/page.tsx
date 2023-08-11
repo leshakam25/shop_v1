@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 const getProductById = async (_id: string) => {
-    const url = `${process.env.BASE_URL}/product/${_id}`
+    const url = `${process.env.REQUEST_URL}/product/${_id}`
     try {
         const res = await fetch(url, {
             cache: 'no-store'

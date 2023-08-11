@@ -12,7 +12,7 @@ const UserListItem = ({el}: any) => {
             alignItems: 'center',
             background: 'lightgray',
             p: 1,
-            mb:2,
+            mb: 2,
             borderRadius: '8px',
             opacity: 0.9,
             ":hover": {

@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from "@/components/Auth/LoginForm";
 
-const Page = async () => {
+const Page = () => {
     return <LoginForm/>
 };
 

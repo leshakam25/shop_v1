@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
 import {useRouter} from "next/navigation";
 
+
 const UserCreateForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -11,7 +12,6 @@ const UserCreateForm = () => {
     const [error, setError] = useState('')
 
     const router = useRouter()
-
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()
@@ -34,19 +34,18 @@ const UserCreateForm = () => {
             //     setError("User already exists");
             //     return
             // }
-
-            const res = await fetch("http://localhost:4000/user/create/", {
-                mode: "no-cors",
+            const user = {
+                name,
+                email,
+                password,
+                role
+            }
+            const res = await fetch("http://212.60.20.190:4000/user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password,
-                    role
-                })
+                body: JSON.stringify(user)
             })
 
             if (res.ok) {
@@ -54,13 +53,13 @@ const UserCreateForm = () => {
                 form.reset();
                 router.push("/user/list")
             } else {
+                console.log(user)
                 console.log("Registration failed")
             }
         } catch (error) {
             console.log("Registration failed", error)
         }
     }
-
     return (
         <form onSubmit={handleSubmit}>
             <Box sx={{

@@ -8,16 +8,16 @@ import {useRouter} from "next/navigation";
 const UserRemoveButton = ({id}: any) => {
     const router: AppRouterInstance = useRouter()
     const removeUser = async () => {
-        // const confirmed = confirm('Are you sure?')
-        //
-        // if (confirmed) {
-        //     const res: Response = await fetch(`/api/user?id=${id}`, {
-        //         method: "DELETE"
-        //     })
-        //     if (res.ok) {
-        //         router.refresh();
-        //     }
-        // }
+        const confirmed = confirm('Are you sure?')
+
+        if (confirmed) {
+            const res: Response = await fetch(`http://212.60.20.190:4000/user/${id}`, {
+                method: "DELETE"
+            })
+            if (res.ok) {
+                router.refresh();
+            }
+        }
     }
     return (
         <Tooltip title={'Удалить'}>

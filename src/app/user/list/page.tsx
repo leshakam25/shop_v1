@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 
 const getUsers = async (): Promise<any> => {
-    const url = `${process.env.BASE_URL}/user/`
+    const url = `${process.env.REQUEST_URL}/user/`
     try {
         const res = await fetch(url,
             {

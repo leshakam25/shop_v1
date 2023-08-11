@@ -14,28 +14,30 @@ const UserEditForm = ({user}:any) => {
 
 
     const handleSubmit = async (e: any): Promise<void> => {
-        // e.preventDefault();
-        // try {
-        //     const res: Response = await fetch(`/api/user/${user._id}`, {
-        //         method: "PUT",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify({
-        //             newName,
-        //             newEmail,
-        //             newPassword,
-        //             newRole})
-        //     })
-        //
-        //     if (!res.ok) {
-        //         throw new Error("Failed to update product")
-        //     }
-        //     router.refresh()
-        //     router.push("/user/list/")
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        e.preventDefault();
+        try {
+            const user = {
+                newName,
+                newEmail,
+                newPassword,
+                newRole
+            }
+            const res = await fetch("http://212.60.20.190:4000/user", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            })
+
+            if (!res.ok) {
+                throw new Error("Failed to update product")
+            }
+            router.refresh()
+            router.push("/user/list/")
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

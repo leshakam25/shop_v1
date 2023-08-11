@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 const getProducts = async (): Promise<any> => {
-    const url = `${process.env.BASE_URL}/product/`
+    const url = `${process.env.REQUEST_URL}/product/`
     try {
         const res = await fetch(url,
             {
