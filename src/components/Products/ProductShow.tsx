@@ -1,18 +1,24 @@
 "use client"
 import React from 'react';
-import {Box, CardMedia, Typography} from "@mui/material";
+import { Box, CardMedia, Typography } from "@mui/material";
+import {Product} from "@/interfaces/product.interface";
 
-const ProductShow = ({product}: any) => {
+interface ProductShowProps {
+    product: Product;
+}
+
+const ProductShow: React.FC<ProductShowProps> = ({ product }) => {
     return (
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            background: 'lightgray',
-            borderRadius: "8px",
-            my:4,
-            p: 2
-        }}>
-
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                background: 'lightgray',
+                borderRadius: "8px",
+                my: 4,
+                p: 2,
+            }}
+        >
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -21,7 +27,7 @@ const ProductShow = ({product}: any) => {
                     Название: {product.title}
                 </Typography>
                 <Typography variant={'body1'}>
-                    Цена:{product.price}
+                    Цена: {product.price}
                 </Typography>
                 <Typography variant={'body1'}>
                     Описание: {product.desc}
@@ -31,20 +37,20 @@ const ProductShow = ({product}: any) => {
                 display: 'flex',
                 flexDirection: 'row',
             }}>
-            {product.images && product.images.map((el: any, i: any) => (
-                <CardMedia
-                    key={i}
-                    component="img"
-                    image={el}
-                    alt="no image"
-                    sx={{
-                        boxShadow: 2,
-                        borderRadius: '8px',
-                        width: {xs: "100%", sm: "300px"},
-                        height: {xs: '200px', sm: "300px"}
-                    }}
-                />
-            ))}
+                {product.images && product.images.map((el: string, i: number) => (
+                    <CardMedia
+                        key={i}
+                        component="img"
+                        image={el}
+                        alt="no image"
+                        sx={{
+                            boxShadow: 2,
+                            borderRadius: '8px',
+                            width: { xs: "100%", sm: "300px" },
+                            height: { xs: '200px', sm: "300px" },
+                        }}
+                    />
+                ))}
             </Box>
         </Box>
     );

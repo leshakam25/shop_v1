@@ -1,75 +1,93 @@
 "use client"
-import React, {useState} from 'react';
-import {Box, Button, TextField} from "@mui/material";
+import { Box, TextField, Button } from '@mui/material';
+import React, {useState} from "react";
 import {useRouter} from "next/navigation";
-import {AppRouterInstance} from "next/dist/shared/lib/app-router-context";
-
-const ProductEditForm = ({product}: any) => {
-    const [newTitle, setNewTitle] = useState(product.title)
-    const [newDesc, setNewDesc] = useState(product.desc)
-    const [newPrice, setNewPrice] = useState(product.price)
-    const [newImages, setNewImages] = useState(product.images)
+import {Product} from "@/interfaces/product.interface";
 
 
-    const router: AppRouterInstance = useRouter()
-    const handleSubmit = async (e: any): Promise<void> => {
+interface Props {
+    product: Product;
+}
+
+const ProductEditForm = ({ product }: Props) => {
+    const [newProduct, setNewProduct] = useState<Product>({
+        _id: product._id,
+        title: product.title,
+        desc: product.desc,
+        price: product.price,
+        images: product.images,
+    });
+
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const res: Response = await fetch(`${process.env.BASE_URL}/product/${product._id}`, {
-                method: "PUT",
+            const url = `http://localhost:4000/product/${product._id}`
+            await fetch(url, {
+                method: 'PUT',
                 headers: {
-                    "Content-Type": "application/json"
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    title: newTitle,
-                    desc: newDesc,
-                    price: newPrice,
-                    images: newImages
-                })
-            })
-            router.refresh()
-            router.push("/products/list/")
+                body: JSON.stringify(newProduct),
+            });
+            router.refresh();
+            router.push('/products/list/');
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setNewProduct((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
     return (
         <form onSubmit={handleSubmit}>
-            <Box sx={{
-                display: "flex",
-                flexDirection: 'column',
-                width: '100%',
-                my: 2,
-                gap: 1
-            }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    my: 2,
+                    gap: 1,
+                }}
+            >
                 <TextField
-                    value={newTitle}
-                    variant={'outlined'}
-                    label={'Название'}
-                    onChange={e => setNewTitle(e.target.value)}
+                    name="title"
+                    label="Название"
+                    value={newProduct.title}
+                    onChange={handleInputChange}
+                    variant="outlined"
                 />
                 <TextField
-                    value={newDesc}
-                    variant={'outlined'}
-                    label={'Описание'}
-                    onChange={e => setNewDesc(e.target.value)}
+                    name="desc"
+                    label="Описание"
+                    value={newProduct.desc}
+                    onChange={handleInputChange}
+                    variant="outlined"
                     multiline
                     rows={4}
                 />
                 <TextField
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewPrice(e.target.value)}
-                    value={newPrice}
-                    variant={'outlined'}
-                    label={'Цена'}
+                    name="price"
+                    label="Цена"
+                    value={newProduct.price}
+                    onChange={handleInputChange}
+                    variant="outlined"
                 />
-
                 <TextField
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewImages(e.target.value)}
-                    value={newImages}
-                    variant={'outlined'}
-                    label={'Изображениея'}
+                    name="images"
+                    label="Изображение"
+                    value={newProduct.images}
+                    onChange={handleInputChange}
+                    variant="outlined"
                 />
-                <Button type={"submit"} variant={'contained'} color={'success'}>
+                <Button type="submit" variant="contained" color="success">
                     Обновить
                 </Button>
             </Box>

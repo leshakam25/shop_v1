@@ -4,7 +4,11 @@ import Link from "next/link";
 import {IconButton, Tooltip} from "@mui/material";
 import InfoIcon from '@mui/icons-material/Info';
 
-const ProductShowButton = ({id}: any) => {
+interface ProductShowButtonProps {
+    id: string;
+}
+
+const ProductShowButton: React.FC<ProductShowButtonProps> = ({id}) => {
     return (
         <Link href={`/products/show/${id}`}>
             <Tooltip title={'Информация о товаре'}>

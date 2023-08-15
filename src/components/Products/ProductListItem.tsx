@@ -1,25 +1,33 @@
 "use client"
 import React from 'react';
-import {Card, CardActions, CardContent, CardHeader, CardMedia, Chip, Typography} from "@mui/material";
+import {Card, CardActions, CardContent, CardHeader, CardMedia,  Typography} from "@mui/material";
 import ProductRemoveButton from "@/components/Products/ProductRemoveButton";
 import ProductEditButton from "@/components/Products/ProductEditButton";
 import ProductShowButton from "@/components/Products/ProductShowButton";
+import {Product} from "@/interfaces/product.interface";
 
-const ProductListItem = ({el}: any) => {
+interface ProductListItemProps {
+    el: Product
+}
+
+const ProductListItem: React.FC<ProductListItemProps> = ({ el }) => {
     return (
-        <Card key={el._id}
-              sx={{
-                  boxShadow: '0',
-                  background: 'lightgray',
-                  width: {
-                      xs: "100%", md: "45%", lg: "30%",
-                  },
-                  m: {xs: 1, sm: 3},
-              }}>
+        <Card
+            key={el._id}
+            sx={{
+                boxShadow: '0',
+                background: 'lightgray',
+                width: {
+                    xs: "100%",
+                    md: "45%",
+                    lg: "30%",
+                },
+                m: { xs: 1, sm: 3 },
+            }}
+        >
             <CardHeader
                 title={el.title}
                 subheader={el.price}
-
             />
             <CardMedia
                 component="img"
@@ -33,9 +41,9 @@ const ProductListItem = ({el}: any) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <ProductShowButton id={el._id}/>
-                <ProductEditButton id={el._id}/>
-                <ProductRemoveButton id={el._id}/>
+                <ProductShowButton id={el._id} />
+                <ProductEditButton id={el._id} />
+                <ProductRemoveButton id={el._id} />
             </CardActions>
         </Card>
     );

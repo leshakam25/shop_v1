@@ -1,28 +1,35 @@
 "use client"
 import React from 'react';
-import {IconButton, Tooltip} from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import {useRouter} from "next/navigation";
-import {AppRouterInstance} from "next/dist/shared/lib/app-router-context";
+import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
-const ProductRemoveButton = ({id}: any) => {
-    const router: AppRouterInstance = useRouter()
+interface ProductRemoveButtonProps {
+    id: string | undefined;
+}
+
+const ProductRemoveButton: React.FC<ProductRemoveButtonProps> = ({ id }) => {
+    const router: AppRouterInstance = useRouter();
+
     const removeProduct = async () => {
-        const confirmed = confirm('Are you sure?')
+        const confirmed = confirm('Are you sure?');
 
         if (confirmed) {
-            const res: Response = await fetch(`http://212.60.20.190:4000/product/${id}`, {
+            const res: Response = await fetch(`http://localhost:4000/product/${id}`, {
                 method: "DELETE",
-            })
+            });
+
             if (res.ok) {
                 router.refresh();
             }
         }
-    }
+    };
+
     return (
-        <Tooltip title={'Удалить'}>
+        <Tooltip title={'Delete'}>
             <IconButton onClick={removeProduct} color={'error'}>
-                <HighlightOffIcon/>
+                <HighlightOffIcon />
             </IconButton>
         </Tooltip>
     );
