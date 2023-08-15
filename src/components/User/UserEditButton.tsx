@@ -3,13 +3,18 @@ import {IconButton, Tooltip} from "@mui/material";
 import Link from "next/link";
 import EditIcon from '@mui/icons-material/Edit';
 
-const UserEditButton = ({id}: any) => {
+interface UserEditButtonProps {
+    id: string;
+
+}
+
+const UserEditButton: React.FC<UserEditButtonProps> = ({id}) => {
     return (
         <Link href={`/user/edit/${id}`}>
             <Tooltip title={'Редактировать'}>
-            <IconButton color={'primary'}>
-              <EditIcon/>
-            </IconButton>
+                <IconButton color={'primary'}>
+                    <EditIcon/>
+                </IconButton>
             </Tooltip>
         </Link>
     );

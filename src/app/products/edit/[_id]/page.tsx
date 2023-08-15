@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Products',
 }
 
-const getProductById = async (_id: string) => {
+const getProductById = async (_id: string)=> {
     const url = `${process.env.REQUEST_URL}/product/${_id}`
     try {
         const res = await fetch(url, {
@@ -22,7 +22,7 @@ const getProductById = async (_id: string) => {
 
 const EditProduct = async ({params}: Params) => {
     const {_id} = params;
-    const product: any = await getProductById(_id);
+    const {product} = await getProductById(_id);
     return <>{product && <ProductEditForm product={product}/>}</>
 };
 

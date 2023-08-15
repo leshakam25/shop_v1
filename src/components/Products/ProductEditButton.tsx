@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 interface ProductEditButtonProps {
     id: string;
+
 }
 
 const ProductEditButton: React.FC<ProductEditButtonProps> = ({id}) => {
