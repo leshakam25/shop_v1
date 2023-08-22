@@ -1,14 +1,20 @@
 import React from 'react';
 import UserEditForm from "@/components/User/UserEditForm";
-import {Metadata} from "next";
-import {Params} from "next/dist/shared/lib/router/utils/route-matcher";
+import {Metadata, NextPage} from "next";
+import {User} from "@/interfaces/user.interface";
+
+interface Params {
+    params: {
+        _id: string;
+    };
+}
 
 export const metadata: Metadata = {
     title: 'Edit user | Shop v1.0',
     description: 'User',
 }
 
-const getUserById = async (_id: string) => {
+const getUserById = async (_id: string): Promise<User | undefined> => {
     const url = `${process.env.REQUEST_URL}/user/${_id}`
     try {
         const res = await fetch(url, {
@@ -20,9 +26,9 @@ const getUserById = async (_id: string) => {
     }
 }
 
-const EditUser = async ({params}: Params) => {
+const EditUser: NextPage<Params> = async ({params}) => {
     const {_id} = params;
-    const {user} = await getUserById(_id);
+    const {user}: any = await getUserById(_id);
     return <>{user && <UserEditForm user={user}/>}</>
 };
 
