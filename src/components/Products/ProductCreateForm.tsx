@@ -26,7 +26,7 @@ const ProductCreateForm: React.FC = () => {
         }
 
         try {
-            const res = await fetch('http://localhost:4000/product/', {
+            const res = await fetch('http://localhost:4000/product/create', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',

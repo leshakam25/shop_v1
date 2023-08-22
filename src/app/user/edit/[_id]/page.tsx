@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 const getUserById = async (_id: string): Promise<User | undefined> => {
-    const url = `${process.env.REQUEST_URL}/user/${_id}`
+    const url = `http://localhost:4000/user/${_id}`
     try {
         const res = await fetch(url, {
             cache: 'no-store'

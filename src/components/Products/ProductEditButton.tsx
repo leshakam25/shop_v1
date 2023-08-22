@@ -1,11 +1,10 @@
 import React from 'react';
-import {IconButton, Tooltip} from "@mui/material";
 import Link from "next/link";
+import {IconButton, Tooltip} from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 
 interface ProductEditButtonProps {
     id: string;
-
 }
 
 const ProductEditButton: React.FC<ProductEditButtonProps> = ({id}) => {

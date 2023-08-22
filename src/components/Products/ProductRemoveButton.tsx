@@ -22,6 +22,7 @@ const ProductRemoveButton: React.FC<ProductRemoveButtonProps> = ({ id }) => {
 
             if (res.ok) {
                 router.refresh();
+                router.push('/products/list');
             }
         }
     };
