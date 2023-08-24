@@ -1,4 +1,4 @@
-import HeaderWrapper from "@/components/TheHeader/HeaderWrapper";
+import HeaderWrapper from "@/shared/components/TheHeader/HeaderWrapper";
 
 const TheHeader = () => {
     return (

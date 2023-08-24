@@ -1,7 +1,7 @@
 import React from 'react';
-import UserEditForm from "@/components/User/UserEditForm";
+import UserEditForm from "@/user/components/UserEditForm";
 import {Metadata, NextPage} from "next";
-import {User} from "@/interfaces/user.interface";
+import {User} from "@/user/interfaces/user.interface";
 
 interface Params {
     params: {
@@ -29,6 +29,7 @@ const getUserById = async (_id: string): Promise<User | undefined> => {
 const EditUser: NextPage<Params> = async ({params}) => {
     const {_id} = params;
     const {user}: any = await getUserById(_id);
+    console.log(user)
     return <>{user && <UserEditForm user={user}/>}</>
 };
 

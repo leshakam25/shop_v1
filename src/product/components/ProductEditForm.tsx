@@ -2,14 +2,14 @@
 import { Box, TextField, Button } from '@mui/material';
 import React, {useState} from "react";
 import {useRouter} from "next/navigation";
-import {Product} from "@/interfaces/product.interface";
+import {Product} from "@/product/interfaces/product.interface";
 
 
-interface Props {
+interface EditFormProps {
     product: Product;
 }
 
-const ProductEditForm = ({ product }: Props) => {
+const ProductEditForm = ({ product }: EditFormProps) => {
     const [newProduct, setNewProduct] = useState<Product>({
         _id: product._id,
         title: product.title,

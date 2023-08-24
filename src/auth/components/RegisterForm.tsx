@@ -2,13 +2,11 @@
 import React, {useState} from 'react';
 import {Alert, Box, Button, TextField} from "@mui/material";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
-
 const RegisterForm = () => {
     const [name, setName] = useState<string>("")
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("");
-    const [error, setError] = useState<string>("")
+    const [error] = useState<string>("")
 
     const handleSubmit = async (e: any) => {
         e.preventDefault()

@@ -1,8 +1,8 @@
 "use client"
 import React from 'react';
 import {Container} from "@mui/material";
-import Navigation from "@/components/TheHeader/Navigation";
-import AuthBlock from "@/components/TheHeader/AuthBlock";
+import Navigation from "@/shared/components/TheHeader/Navigation";
+import AuthBlock from "@/shared/components/TheHeader/AuthBlock";
 
 const HeaderWrapper = () => {
     return (

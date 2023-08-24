@@ -3,14 +3,11 @@ import React from 'react';
 import { IconButton, Tooltip } from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import {NextPage} from "next";
+import {ProductRemoveButtonProps} from "@/product/interfaces/product.interface";
 
-interface ProductRemoveButtonProps {
-    id: string | undefined;
-}
-
-const ProductRemoveButton: React.FC<ProductRemoveButtonProps> = ({ id }) => {
-    const router: AppRouterInstance = useRouter();
+const ProductRemoveButton: NextPage<ProductRemoveButtonProps> = ({ id }) => {
+    const router = useRouter();
 
     const removeProduct = async () => {
         const confirmed = confirm('Are you sure?');

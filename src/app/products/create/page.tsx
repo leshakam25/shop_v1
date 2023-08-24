@@ -1,6 +1,6 @@
 import React from 'react';
 import {Metadata} from "next";
-import ProductCreateForm from "@/components/Products/ProductCreateForm";
+import ProductCreateForm from "@/product/components/ProductCreateForm";
 
 export const metadata: Metadata = {
     title: 'Create product | Shop v1.0',

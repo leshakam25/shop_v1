@@ -1,10 +1,10 @@
 "use client"
 import React from 'react';
 import {Card, CardActions, CardContent, CardHeader, CardMedia,  Typography} from "@mui/material";
-import ProductRemoveButton from "@/components/Products/ProductRemoveButton";
-import ProductEditButton from "@/components/Products/ProductEditButton";
-import ProductShowButton from "@/components/Products/ProductShowButton";
-import {Product} from "@/interfaces/product.interface";
+import ProductRemoveButton from "@/product/components/ProductRemoveButton";
+import ProductEditButton from "@/product/components/ProductEditButton";
+import ProductShowButton from "@/product/components/ProductShowButton";
+import {Product} from "@/product/interfaces/product.interface";
 
 interface ProductListItemProps {
     el: Product

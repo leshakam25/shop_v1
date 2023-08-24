@@ -15,7 +15,7 @@ const UserEditForm = ({user}:any) => {
     const handleSubmit = async (e: any): Promise<void> => {
         e.preventDefault();
         try {
-            const res = await fetch(`${process.env.BASE_URL}/user/${user._id}`, {
+             await fetch(`http://localhost:4000/user/${user._id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

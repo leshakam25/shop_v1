@@ -1,4 +1,4 @@
-import FooterWrapper from "@/components/TheFooter/FooterWrapper";
+import FooterWrapper from "@/shared/components/TheFooter/FooterWrapper";
 
 const TheFooter = () => {
     return (

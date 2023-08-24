@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { Box, CardMedia, Typography } from "@mui/material";
-import {Product} from "@/interfaces/product.interface";
+import {Product} from "@/product/interfaces/product.interface";
 
 interface ProductShowProps {
     product: Product;

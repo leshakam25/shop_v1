@@ -1,8 +1,8 @@
 import React from 'react';
 import {Metadata, NextPage} from "next";
-import ProductShow from "@/components/Products/ProductShow";
-import {getProductById} from "@/services/product.service";
-import {Params} from "@/interfaces/shared.interface";
+import ProductShow from "@/product/components/ProductShow";
+import {getProductById} from "@/product/services/product.service";
+import {Params} from "@/shared/interfaces/params.interface";
 
 export const metadata: Metadata = {
     title: 'Show product | Shop v1.0',

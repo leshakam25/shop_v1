@@ -1,5 +1,5 @@
 import React from 'react';
-import UserCreateForm from "@/components/User/UserCreateForm";
+import UserCreateForm from "@/user/components/UserCreateForm";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {

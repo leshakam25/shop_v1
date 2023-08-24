@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import {Box, Button, TextField, Typography} from '@mui/material';
 import {useRouter} from 'next/navigation';
-import {Product} from "@/interfaces/product.interface";
+import {Product} from "@/product/interfaces/product.interface";
 
 const ProductCreateForm: React.FC = () => {
     const [product, setProduct] = useState<Product>({
@@ -17,7 +17,6 @@ const ProductCreateForm: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         const {title, desc, price, images} = product;
 
         if (!title || !desc || !price) {

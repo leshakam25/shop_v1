@@ -40,7 +40,7 @@ const UserCreateForm = () => {
                 password,
                 role
             }
-            const res = await fetch("http://212.60.20.190:4000/user", {
+            const res = await fetch("http://localhost:4000/user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

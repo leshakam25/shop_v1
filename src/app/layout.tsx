@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import "normalize.css"
-import TheHeader from "@/components/TheHeader/TheHeader";
+import TheHeader from "@/shared/components/TheHeader/TheHeader";
 import React from "react";
 import {Container} from "@mui/material";
 // import TheFooter from "@/components/TheFooter/TheFooter";

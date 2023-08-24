@@ -1,10 +1,12 @@
 "use client"
 import React, {useState} from 'react';
 import {Box, Typography} from "@mui/material";
-import ProductListItem from "@/components/Products/ProductListItem";
-import ProductCreateButton from "@/components/Products/ProductCreateButton";
+import ProductListItem from "@/product/components/ProductListItem";
+import ProductCreateButton from "@/product/components/ProductCreateButton";
+import {NextPage} from "next";
+import {Product} from "@/product/interfaces/product.interface";
 
-const ProductsList = ({data}: any) => {
+const ProductsList: NextPage<any | undefined> = ({data}) => {
     const [products] = useState(data)
     return (
         <Box sx={{my: 2}}>
@@ -32,7 +34,7 @@ const ProductsList = ({data}: any) => {
                     position: 'relative'
                 }}
             >
-                {products && products.map((el: any) => (<ProductListItem key={el._id} el={el}/>))}
+                {products && products.map((el: Product) => (<ProductListItem key={el._id} el={el}/>))}
             </Box>
         </Box>
 

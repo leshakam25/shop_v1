@@ -1,25 +1,13 @@
 import React from 'react';
 import {Metadata} from "next";
-import ProductsList from "@/components/Products/ProductsList";
+import ProductsList from "@/product/components/ProductsList";
+import {getProducts} from "@/product/services/product.service";
 
 export const metadata: Metadata = {
     title: 'List products | Shop v1.0',
     description: 'Products',
 }
 
-const getProducts = async (): Promise<any> => {
-    const url = 'http://127.0.0.1:4000/product/'
-    try {
-        const res = await fetch(url,
-            {
-                // next: {revalidate: 60},
-                cache: "no-store"
-            });
-        return res.json()
-    } catch (error) {
-        console.log("Error loading products: ", error)
-    }
-}
 const Page = async () => {
         const products: any = await getProducts()
         return (

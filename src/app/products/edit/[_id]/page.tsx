@@ -1,8 +1,8 @@
 import React from 'react';
 import {Metadata, NextPage} from "next";
-import ProductEditForm from "@/components/Products/ProductEditForm";
-import {getProductById} from "@/services/product.service";
-import {Params} from "@/interfaces/shared.interface";
+import ProductEditForm from "@/product/components/ProductEditForm";
+import {getProductById} from "@/product/services/product.service";
+import {Params} from "@/shared/interfaces/params.interface";
 
 export const metadata: Metadata = {
     title: 'Edit product | Shop v1.0',
@@ -11,8 +11,7 @@ export const metadata: Metadata = {
 
 const EditProduct: NextPage<Params> = async ({params}) => {
     const {_id} = params;
-    const product: any = await getProductById(_id);
-    console.log(_id)
+    const product = await getProductById(_id);
     return <>{product && <ProductEditForm product={product}/>}</>
 };
 

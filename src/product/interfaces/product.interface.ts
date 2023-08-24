@@ -5,3 +5,8 @@ export interface Product {
     price: number;
     images: string[];
 }
+
+
+export interface ProductRemoveButtonProps {
+    id: string | undefined;
+}

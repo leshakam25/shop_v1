@@ -1,8 +1,8 @@
 "use client"
 import React, {useState} from 'react';
-import UserListItem from "@/components/User/UserListItem";
+import UserListItem from "@/user/components/UserListItem";
 import {Box, Typography} from "@mui/material";
-import UserCreateButton from "@/components/User/UserCreateButton";
+import UserCreateButton from "@/user/components/UserCreateButton";
 
 const UserList =  ({data}: any) => {
     const [userList] = useState(data)
