@@ -12,7 +12,7 @@ export const getProductById = async (_id: string): Promise<Product | undefined> 
     }
 }
 
-export const getProducts = async (): Promise<any> => {
+export const getAllProducts = async (): Promise<any> => {
     const url = 'http://127.0.0.1:4000/product/'
     try {
         const res = await fetch(url,

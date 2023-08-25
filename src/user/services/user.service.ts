@@ -1,5 +1,8 @@
-export const getUsers = async (): Promise<any> => {
-    const url = 'http://localhost:4000/user/'
+import {IUser} from "@/user/interfaces/user.interface";
+
+const url = 'http://localhost:4000/user/'
+
+export const getAllUsers = async (): Promise<IUser[] | undefined> => {
     try {
         const res = await fetch(url,
             {
@@ -11,12 +14,19 @@ export const getUsers = async (): Promise<any> => {
         console.log("Error loading products: ", error)
     }
 }
-export const removeUser = async ({id}: any) => {
-    const confirmed = confirm('Are you sure?')
 
+export const removeUser = async (_id: string) => {
+    const confirmed = confirm('Are you sure?')
     if (confirmed) {
-         await fetch(`http://localhost:4000/user/${id}`, {
-            method: "DELETE"
-        })
+        await fetch(`${url}`+`${_id}`, {method: "DELETE"})
+    }
+}
+
+export const getUserById = async (_id: string): Promise<IUser | undefined> => {
+    try {
+        const res = await fetch(`${url}`+`${_id}`, {cache: 'no-store'})
+        return res.json()
+    } catch (error) {
+        console.log(error)
     }
 }

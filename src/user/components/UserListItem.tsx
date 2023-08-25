@@ -36,8 +36,8 @@ const UserListItem = ({el}: any) => {
                     </Typography>
                 </Grid>
             </Grid>
-            <UserEditButton id={el._id}/>
-            <UserRemoveButton id={el._id}/>
+            <UserEditButton _id={el._id}/>
+            <UserRemoveButton _id={el._id}/>
         </Box>
     );
 };

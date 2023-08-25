@@ -1,13 +1,13 @@
 import React from 'react';
-import {Metadata} from "next";
+import {Metadata, NextPage} from "next";
 
 export const metadata: Metadata = {
     title: 'Authorization | Shop v1.0',
     description: 'Authorization',
 }
 
-const Page = () => {
+const Auth: NextPage = () => {
     return <div>Auth</div>
 };
 
-export default Page;
+export default Auth;

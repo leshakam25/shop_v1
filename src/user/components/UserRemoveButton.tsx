@@ -2,10 +2,22 @@
 import React from 'react';
 import {IconButton, Tooltip} from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import {removeUser} from "@/user/services/user.service";
+import {useUsers} from "@/user/store";
+import {shallow} from "zustand/shallow";
+import {useRouter} from "next/navigation";
 
-const UserRemoveButton = ({id}: any) => {
-    const handleClick = () => {removeUser(id)}
+interface UserRemoveButtonProps {
+    _id: string;
+}
+
+const UserRemoveButton: React.FC<UserRemoveButtonProps> = ({_id}) => {
+    const removeUser = useUsers((state) =>state.removeUser, shallow)
+    const router = useRouter()
+    const handleClick = () => {
+        removeUser(_id)
+        router.refresh()
+        router.push('/user/list')
+    }
     return (
         <Tooltip title={'Удалить'}>
             <IconButton onClick={handleClick} color={'error'}>

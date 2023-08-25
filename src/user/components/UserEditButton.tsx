@@ -4,12 +4,12 @@ import Link from "next/link";
 import EditIcon from '@mui/icons-material/Edit';
 
 interface UserEditButtonProps {
-    id: string;
+    _id: string;
 }
 
-const UserEditButton: React.FC<UserEditButtonProps> = ({id}) => {
+const UserEditButton: React.FC<UserEditButtonProps> = ({_id}) => {
     return (
-        <Link href={`/user/edit/${id}`}>
+        <Link href={`/user/edit/${_id}`}>
             <Tooltip title={'Редактировать'}>
                 <IconButton color={'primary'}>
                     <EditIcon/>
