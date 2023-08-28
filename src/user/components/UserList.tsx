@@ -1,12 +1,12 @@
 "use client"
 import useSWR from "swr";
 import React from 'react';
-import {User} from "next-auth";
 import {Box, Typography} from "@mui/material";
 import Loading from "@/shared/components/Loading/Loading";
 import UserListItem from "@/user/components/UserListItem";
 import UserCreateButton from "@/user/components/UserCreateButton";
 import {getAllUsers} from "@/user/services/user.service";
+import {IUser} from "@/user/interfaces/user.interface";
 
 const UserList = () => {
     const {data: users, isLoading} = useSWR("users", getAllUsers)
@@ -30,7 +30,7 @@ const UserList = () => {
                 </Typography>
                 <UserCreateButton/>
             </Box>
-            {users && users.map((el: User) => (<UserListItem key={el._id} el={el}/>))}
+            {users && users.map((el: IUser) => (<UserListItem key={el._id} el={el}/>))}
         </Box>
     )
 }

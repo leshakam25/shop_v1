@@ -1,29 +1,30 @@
-import {getUserById, getAllUsers, removeUser, editUserById} from "@/user/services/user.service";
-import {createWithEqualityFn} from "zustand/traditional";
+import {getAllUsers, getUserById, removeUser} from "@/user/services/user.service";
+import {create} from "zustand";
 
-type UseUsers = {
+type UsersStore = {
     users: any[];
     loading: boolean;
-    getAllUsers: () => Promise<Void>;
-    getUserById: (value: string) => Promise<Void>;
+    getAllUsers: () => Promise<void>;
+    getUserById: (_id: string) => Promise<void>;
 }
 
-export const useUsers = createWithEqualityFn<UseUsers>()((set) => ({
+export const useUsers = create<UsersStore>()((set) => ({
     users: [],
+    user: {},
     loading: false,
     getAllUsers: async () => {
         set({loading: true})
         const users = await getAllUsers()
         set({users, loading: false})
     },
-    getUserById: async (_id) => {
+    getUserById: async (_id: string) => {
         set({loading: true})
-        const users = await getUserById(_id)
-        set({users, loading: false})
+        const user = await getUserById(_id)
+        set({users: [user], loading: false})
     },
-    removeUser: async (_id) => {
+    removeUser: async (_id: string) => {
         set({loading: true})
-         await removeUser(_id)
+        await removeUser(_id)
         set({loading: false})
     },
 }))

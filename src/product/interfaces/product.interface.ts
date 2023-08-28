@@ -1,4 +1,4 @@
-export interface Product {
+export interface IProduct {
     _id: string;
     title: string;
     desc: string;
@@ -7,6 +7,6 @@ export interface Product {
 }
 
 
-export interface ProductRemoveButtonProps {
+export interface IProductRemoveButtonProps {
     id: string | undefined;
 }

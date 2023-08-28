@@ -3,8 +3,9 @@ import React from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 import UserRemoveButton from "@/user/components/UserRemoveButton";
 import UserEditButton from "@/user/components/UserEditButton";
+import {IUser} from "@/user/interfaces/user.interface";
 
-const UserListItem = ({el}: any) => {
+const UserListItem = ({el}: IUser) => {
     return (
         <Box sx={{
             display: 'flex',
