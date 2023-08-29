@@ -1,19 +1,24 @@
 "use client"
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import {Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
 import {useRouter} from "next/navigation";
+import {IRole, IUser} from "@/user/interfaces/user.interface";
 
 
 const UserCreateForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [role, setRole] = useState('')
+    const [role, setRole] = useState<IRole>()
     const [error, setError] = useState('')
+
+    const handleRoleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setRole(event.target.value as IRole);
+    };
 
     const router = useRouter()
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
         if (!name || !email || !password || !role) {
@@ -34,7 +39,7 @@ const UserCreateForm = () => {
             //     setError("User already exists");
             //     return
             // }
-            const user = {
+            const user: IUser = {
                 name,
                 email,
                 password,
@@ -49,7 +54,7 @@ const UserCreateForm = () => {
             })
 
             if (res.ok) {
-                const form = e.target
+                const form = e.target as HTMLFormElement
                 form.reset();
                 router.push("/user/list")
             } else {
@@ -60,6 +65,7 @@ const UserCreateForm = () => {
             console.log("Registration failed", error)
         }
     }
+    // @ts-ignore
     return (
         <form onSubmit={handleSubmit}>
             <Box sx={{
@@ -99,7 +105,7 @@ const UserCreateForm = () => {
                         labelId="select-role"
                         value={role}
                         label={"Роль"}
-                        onChange={(e) => setRole(e.target.value)}
+                        onChange={handleRoleChange}
                     >
                         <MenuItem value={'ADMIN'}>Администратор</MenuItem>
                         <MenuItem value={'USER'}>Пользователь</MenuItem>
@@ -117,7 +123,8 @@ const UserCreateForm = () => {
                 {error && <Alert severity="error">{error}</Alert>}
             </Box>
         </form>
-    );
+    )
+        ;
 };
 
 export default UserCreateForm;

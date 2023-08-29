@@ -5,7 +5,11 @@ import UserRemoveButton from "@/user/components/UserRemoveButton";
 import UserEditButton from "@/user/components/UserEditButton";
 import {IUser} from "@/user/interfaces/user.interface";
 
-const UserListItem = ({el}: IUser) => {
+interface UserListItemProps {
+    el: IUser;
+}
+
+const UserListItem: React.FC<UserListItemProps> = ({el}) => {
     return (
         <Box sx={{
             display: 'flex',

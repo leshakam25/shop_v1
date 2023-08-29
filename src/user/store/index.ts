@@ -1,16 +1,17 @@
-import {getAllUsers, getUserById, removeUser} from "@/user/services/user.service";
 import {create} from "zustand";
+import {IUser} from "@/user/interfaces/user.interface";
+import {getAllUsers, getUserById, removeUser} from "@/user/services/user.service";
 
 type UsersStore = {
-    users: any[];
+    users: IUser[];
     loading: boolean;
     getAllUsers: () => Promise<void>;
     getUserById: (_id: string) => Promise<void>;
+    removeUser: (_id: string) => Promise<void>;
 }
 
 export const useUsers = create<UsersStore>()((set) => ({
     users: [],
-    user: {},
     loading: false,
     getAllUsers: async () => {
         set({loading: true})
@@ -19,7 +20,7 @@ export const useUsers = create<UsersStore>()((set) => ({
     },
     getUserById: async (_id: string) => {
         set({loading: true})
-        const user = await getUserById(_id)
+        const user: IUser = await getUserById(_id)
         set({users: [user], loading: false})
     },
     removeUser: async (_id: string) => {

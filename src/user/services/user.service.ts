@@ -22,7 +22,7 @@ export const removeUser = async (_id: string) => {
     }
 }
 
-export const getUserById = async (_id: string): Promise<IUser | undefined> => {
+export const getUserById = async (_id: string) => {
     try {
         const res = await fetch(`${url}`+`${_id}`, {cache: 'no-store'})
         return res.json()
