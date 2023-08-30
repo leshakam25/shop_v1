@@ -37,7 +37,7 @@ const UserListItem: React.FC<UserListItemProps> = ({el}) => {
                 </Grid>
                 <Grid item xs={12} sm={3}>
                     <Typography variant={'h6'}>
-                        {el.role}
+                        {el.role.toString()}
                     </Typography>
                 </Grid>
             </Grid>

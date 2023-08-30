@@ -1,24 +1,36 @@
 "use client"
-import React, { useState } from "react";
-import { Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
-import Loading from "@/shared/components/Loading/Loading";
-import { IUser } from "@/user/interfaces/user.interface";
+import React, {useState} from "react";
+import {
+    Alert,
+    Box,
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    TextField,
+    Typography
+} from "@mui/material";
+import {useRouter} from "next/navigation";
+import {IRole, IUser} from "@/user/interfaces/user.interface";
 
 interface IUserEditFormProps {
     user: IUser;
 }
 
-const UserEditForm: React.FC<IUserEditFormProps> = ({ user }) => {
-
-
+const UserEditForm: React.FC<IUserEditFormProps> = ({user}) => {
     const [newName, setNewName] = useState<string>(user.name);
     const [newEmail, setNewEmail] = useState<string>(user.email);
     const [newPassword, setNewPassword] = useState<string>("");
-    const [newRole, setNewRole] = useState<string>(user.role);
+    const [newRole, setNewRole] = useState<any>(user.role);
     const [error, setError] = useState<string>("");
 
     const router = useRouter();
+
+    const handleChange = (e: SelectChangeEvent) => {
+        setNewRole(e.target.value as any)
+    }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
@@ -37,8 +49,7 @@ const UserEditForm: React.FC<IUserEditFormProps> = ({ user }) => {
             });
             router.refresh();
             router.push("/user/list/");
-        } catch (error) {
-            console.log(error);
+        } catch (error: any) {
             setError(error.message);
         }
     };
@@ -78,7 +89,12 @@ const UserEditForm: React.FC<IUserEditFormProps> = ({ user }) => {
                 />
                 <FormControl fullWidth>
                     <InputLabel id="select-role">Роль</InputLabel>
-                    <Select labelId="select-role" value={newRole} label={"Роль"} onChange={(e: React.ChangeEvent<{ value: unknown }>) => setNewRole(e.target.value as string)}>
+                    <Select
+                        value={newRole}
+                        labelId="select-role"
+                        label={"Роль"}
+                        onChange={handleChange}
+                    >
                         <MenuItem value={"admin"}>Администратор</MenuItem>
                         <MenuItem value={"user"}>Пользователь</MenuItem>
                     </Select>
@@ -90,6 +106,7 @@ const UserEditForm: React.FC<IUserEditFormProps> = ({ user }) => {
             </Box>
         </form>
     );
-};
+}
+
 
 export default UserEditForm;
