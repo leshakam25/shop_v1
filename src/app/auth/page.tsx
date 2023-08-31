@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 }
 
 const Auth: NextPage = () => {
-    return <div>Auth</div>
+    return <div>Authorization page</div>
 };
 
 export default Auth;
