@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-import {Alert, Box, Button, TextField} from "@mui/material";
+import {Alert, Box, Button, TextField, Typography} from "@mui/material";
 import Link from "next/link";
 const RegisterForm = () => {
     const [name, setName] = useState<string>("")
@@ -24,11 +24,16 @@ const RegisterForm = () => {
                 gap: 1,
                 borderRadius: 2
             }}>
+                <Typography variant={'h5'} sx={{
+                    opacity:0.6
+                }}>
+                    Регистрация
+                </Typography>
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                     type={'text'}
                     value={name}
-                    label={'Name'}
+                    label={'ФИО'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}
@@ -37,7 +42,7 @@ const RegisterForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     type={'email'}
                     value={email}
-                    label={'Email'}
+                    label={'Почта'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}
@@ -46,7 +51,7 @@ const RegisterForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     type={'password'}
                     value={password}
-                    label={'Password'}
+                    label={'Пароль'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}
@@ -57,7 +62,7 @@ const RegisterForm = () => {
                     variant={'contained'}
                     color={'success'}
                 >
-                    REGISTER
+                    РЕГИСТРАЦИЯ
                 </Button>
                 <Link href={`/auth/login/`}>
                     <Button
@@ -67,7 +72,7 @@ const RegisterForm = () => {
                         variant={'outlined'}
                         color={'primary'}
                     >
-                        LOGIN
+                        ВХОД
                     </Button>
                 </Link>
                 {error &&

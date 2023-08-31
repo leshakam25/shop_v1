@@ -1,14 +1,12 @@
 "use client"
 import React, {useState} from 'react';
-import {Alert, Box, Button, TextField} from "@mui/material";
+import {Alert, Box, Button, TextField, Typography} from "@mui/material";
 import Link from "next/link";
-import {signIn, SignInResponse} from "next-auth/react";
-import {useRouter} from "next/navigation";
 
 const LoginForm = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("");
-    const [error, setError] = useState<string>("")
+    const [error] = useState<string>("")
 
 
     const handleSubmit = async (e: any) => {
@@ -28,11 +26,16 @@ const LoginForm = () => {
                 gap: 1,
                 borderRadius: 2
             }}>
+                <Typography variant={'h5'} sx={{
+                    opacity:0.6
+                }}>
+                    Авторизация
+                </Typography>
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     type={'email'}
                     value={email}
-                    label={'Email'}
+                    label={'Почта'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}/>
@@ -40,7 +43,7 @@ const LoginForm = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     type={'password'}
                     value={password}
-                    label={'Password'}
+                    label={'Пароль'}
                     fullWidth
                     variant={'outlined'}
                     size={'small'}/>
@@ -49,14 +52,14 @@ const LoginForm = () => {
                     fullWidth
                     variant={'contained'}
                     color={'success'}>
-                    LOGIN
+                    ВХОД
                 </Button>
                 <Link href={`/auth/register/`}>
                     <Button
                         sx={{width: {xs: '100vw', sm: '200px'}}}
                         variant={'outlined'}
                         color={'primary'}>
-                        REGISTER
+                        РЕГИСТРАЦИЯ
                     </Button>
                 </Link>
                 {error && <Alert severity="error">{error}</Alert>}

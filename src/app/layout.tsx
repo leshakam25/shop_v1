@@ -1,10 +1,10 @@
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import "normalize.css"
-import TheHeader from "@/shared/components/TheHeader/TheHeader";
 import React from "react";
 import {Container} from "@mui/material";
-// import TheFooter from "@/components/TheFooter/TheFooter";
+import TheHeader from "@/shared/components/TheHeader/TheHeader";
+// import TheFooter from "@/shared/components/TheFooter/TheFooter";
 
 const inter = Inter({subsets: ['latin']})
 

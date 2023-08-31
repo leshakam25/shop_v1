@@ -1,9 +1,20 @@
-import FooterWrapper from "@/shared/components/TheFooter/FooterWrapper";
+import {Container} from "@mui/material";
 
 const TheFooter = () => {
     return (
         <footer>
-            <FooterWrapper/>
+            <Container
+                maxWidth={false}
+                sx={{
+                    height: 60,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "left",
+                    alignItems: "center",
+                    background: "lightyellow",
+                }}>
+                <h4>NextJS13 project</h4>
+            </Container>
         </footer>
     );
 };

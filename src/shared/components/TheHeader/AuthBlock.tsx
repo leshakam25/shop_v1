@@ -1,48 +1,22 @@
 "use client"
 import React from 'react';
-import {Box, Button, Tooltip, Typography} from "@mui/material";
-import LogoutIcon from '@mui/icons-material/Logout';
+import { Button, Tooltip } from "@mui/material";
 import Link from "next/link";
-import {signOut, useSession} from "next-auth/react";
+import LoginIcon from '@mui/icons-material/Login';
+// import {usePathname} from "next/navigation";
 
 const AuthBlock = () => {
+    // const pathname = usePathname();
+    // const isActive = pathname === `/auth/login/` || `/auth/register/`;
         return (
             <>
                 <Link href={`/auth/login/`}>
                     <Tooltip title={"Авторизация"}>
-                        <Button
-                            variant={'contained'}
-                            color={"primary"}
-                        >
-                            <Typography> Login / Register</Typography>
+                        <Button variant={'contained'} color={"primary"} sx={{m: 0.5}}>
+                        <LoginIcon/>
                         </Button>
                     </Tooltip>
                 </Link>
-                {/*<Box>*/}
-                {/*    <Link href={"/user/dashboard"}>*/}
-                {/*        <Tooltip title={"Профиль"}>*/}
-                {/*            <Button*/}
-                {/*                variant={'contained'}*/}
-                {/*                color={'success'}*/}
-                {/*                sx={{m: 0.5}}*/}
-                {/*            >*/}
-                {/*                <Typography variant={'body1'}>*/}
-                {/*                    {session?.user?.name}*/}
-                {/*                </Typography>*/}
-                {/*            </Button>*/}
-                {/*        </Tooltip>*/}
-                {/*    </Link>*/}
-                {/*    <Tooltip title={"Выйти"}>*/}
-                {/*        <Button*/}
-                {/*            onClick={() => signOut({callbackUrl: process.env.BASE_URL})}*/}
-                {/*            variant={'contained'}*/}
-                {/*            color={'error'}*/}
-                {/*            sx={{m: 0.5}}*/}
-                {/*        >*/}
-                {/*            <LogoutIcon/>*/}
-                {/*        </Button>*/}
-                {/*    </Tooltip>*/}
-                {/*</Box>*/}
             </>
 
         )
