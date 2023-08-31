@@ -1,71 +1,56 @@
 "use client"
 import React, {FormEvent, useState} from 'react';
-import {Alert, Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {
+    Alert,
+    Box,
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    TextField,
+    Typography
+} from "@mui/material";
 import {useRouter} from "next/navigation";
 import {IRole, IUser} from "@/user/interfaces/user.interface";
+import {useUser} from "@/user/store";
+import {shallow} from "zustand/shallow";
 
 
 const UserCreateForm = () => {
+    const createUser = useUser((state) =>state.createUser, shallow)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [role, setRole] = useState<IRole>()
     const [error, setError] = useState('')
 
-    const handleRoleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setRole(event.target.value as IRole);
+    const handleChange = (e: SelectChangeEvent) => {
+        setRole(e.target.value as any);
     };
 
     const router = useRouter()
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
-
         if (!name || !email || !password || !role) {
             setError("Заполните поля")
             return
         }
         try {
-            // const resUserExists = await fetch("/api/auth/userExists", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json"
-            //     },
-            //     body: JSON.stringify({email})
-            // })
-            //
-            // const {user} = await resUserExists.json()
-            // if (user) {
-            //     setError("User already exists");
-            //     return
-            // }
             const user: IUser = {
                 name,
                 email,
                 password,
                 role
             }
-            const res = await fetch("http://localhost:4000/user", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(user)
-            })
-
-            if (res.ok) {
-                const form = e.target as HTMLFormElement
-                form.reset();
-                router.push("/user/list")
-            } else {
-                console.log(user)
-                console.log("Registration failed")
-            }
+            createUser(user)
+            router.push('/user/list/')
         } catch (error) {
             console.log("Registration failed", error)
         }
     }
-    // @ts-ignore
     return (
         <form onSubmit={handleSubmit}>
             <Box sx={{
@@ -102,10 +87,10 @@ const UserCreateForm = () => {
                 <FormControl fullWidth>
                     <InputLabel id="select-role">Роль</InputLabel>
                     <Select
-                        labelId="select-role"
                         value={role}
+                        labelId="select-role"
                         label={"Роль"}
-                        onChange={handleRoleChange}
+                        onChange={handleChange}
                     >
                         <MenuItem value={'ADMIN'}>Администратор</MenuItem>
                         <MenuItem value={'USER'}>Пользователь</MenuItem>

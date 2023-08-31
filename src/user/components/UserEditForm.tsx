@@ -14,16 +14,21 @@ import {
 } from "@mui/material";
 import {useRouter} from "next/navigation";
 import {IRole, IUser} from "@/user/interfaces/user.interface";
+import {useUser} from "@/user/store";
+import {shallow} from "zustand/shallow";
 
 interface IUserEditFormProps {
+    _id: string,
     user: IUser;
 }
 
-const UserEditForm: React.FC<IUserEditFormProps> = ({user}) => {
+const UserEditForm: React.FC<IUserEditFormProps> = ({_id, user}) => {
+    const editUser = useUser((state) =>state.editUser, shallow)
+
     const [newName, setNewName] = useState<string>(user.name);
     const [newEmail, setNewEmail] = useState<string>(user.email);
     const [newPassword, setNewPassword] = useState<string>("");
-    const [newRole, setNewRole] = useState<any>(user.role);
+    const [newRole, setNewRole] = useState<string>(user.role);
     const [error, setError] = useState<string>("");
 
     const router = useRouter();
@@ -35,18 +40,13 @@ const UserEditForm: React.FC<IUserEditFormProps> = ({user}) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         try {
-            await fetch(`http://localhost:4000/user/${user._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name: newName,
-                    email: newEmail,
-                    password: newPassword,
-                    role: newRole
-                })
-            });
+            const user: IUser = {
+                name: newName,
+                email: newEmail,
+                password: newPassword,
+                role: newRole
+            }
+            editUser(_id, user)
             router.refresh();
             router.push("/user/list/");
         } catch (error: any) {
@@ -95,8 +95,9 @@ const UserEditForm: React.FC<IUserEditFormProps> = ({user}) => {
                         label={"Роль"}
                         onChange={handleChange}
                     >
-                        <MenuItem value={"admin"}>Администратор</MenuItem>
-                        <MenuItem value={"user"}>Пользователь</MenuItem>
+                        <MenuItem value={'ADMIN'}>Администратор</MenuItem>
+                        <MenuItem value={'USER'}>Пользователь</MenuItem>
+                        <MenuItem value={'MANAGER'}>Манагер</MenuItem>
                     </Select>
                 </FormControl>
                 <Button color={"success"} type={"submit"} variant={"contained"} size={"large"} fullWidth>

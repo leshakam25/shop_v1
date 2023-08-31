@@ -1,17 +1,26 @@
 import {create} from "zustand";
 import {IUser} from "@/user/interfaces/user.interface";
-import {getAllUsers, getUserById, removeUser} from "@/user/services/user.service";
+import {createUser, editUser, getAllUsers, getUserById, removeUser} from "@/user/services/user.service";
 
-type UsersStore = {
+type UserStore = {
     users: IUser[];
+    user: IUser;
     loading: boolean;
     getAllUsers: () => Promise<void>;
     getUserById: (_id: string) => Promise<void>;
     removeUser: (_id: string) => Promise<void>;
+    createUser: (user: IUser) => Promise<void>;
+    editUser: (_id: string, user: IUser) => Promise<any>;
 }
 
-export const useUsers = create<UsersStore>()((set) => ({
+export const useUser = create<UserStore>()((set) => ({
     users: [],
+    user: {
+        name:'',
+        email: '',
+        password: '',
+        role: ''
+    },
     loading: false,
     getAllUsers: async () => {
         set({loading: true})
@@ -21,11 +30,21 @@ export const useUsers = create<UsersStore>()((set) => ({
     getUserById: async (_id: string) => {
         set({loading: true})
         const user: IUser = await getUserById(_id)
-        set({users: [user], loading: false})
+        set({user, loading: false})
     },
     removeUser: async (_id: string) => {
         set({loading: true})
         await removeUser(_id)
         set({loading: false})
     },
+    createUser: async (user: IUser) => {
+        set({loading: true})
+        await createUser(user)
+        set({loading: false})
+    },
+    editUser: async (_id: string, user: IUser) => {
+        set({loading: true})
+        await editUser(_id, user)
+        set({loading: false})
+    }
 }))

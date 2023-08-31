@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, {useState} from 'react';
 import useSWR from "swr";
 import {getUserById} from "@/user/services/user.service";
 import UserEditForm from "@/user/components/UserEditForm";
@@ -10,10 +10,8 @@ interface IUserEditFormProps {
 }
 
 const UserEditWrapper: React.FC<IUserEditFormProps> = ({_id}) => {
-    const {data: user, isLoading} = useSWR(`users`, () => getUserById(_id));
-    console.log("user", user);
-
-    return isLoading ? <Loading/> : <UserEditForm user={user}/>
+    const {data:user, isLoading} = useSWR(`user`, () => getUserById(_id));
+    return isLoading ? <Loading/> : <UserEditForm _id={_id} user={user}/>
 };
 
 export default UserEditWrapper;

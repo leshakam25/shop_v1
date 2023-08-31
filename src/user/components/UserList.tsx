@@ -10,7 +10,6 @@ import {IUser} from "@/user/interfaces/user.interface";
 
 const UserList = () => {
     const {data: users, isLoading} = useSWR("users", getAllUsers)
-    console.log(users)
     return isLoading ? <Loading/> : (
         <Box sx={{
             my: 2,
@@ -31,7 +30,7 @@ const UserList = () => {
                 </Typography>
                 <UserCreateButton/>
             </Box>
-            {users && users.map((el: any) => (<UserListItem key={el._id} el={el}/>))}
+            {users && users.map((el: IUser) => <UserListItem key={el._id} el={el}/>)}
         </Box>
     )
 }
