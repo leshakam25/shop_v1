@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from 'react';
+import React from 'react';
 import useSWR from "swr";
 import {getUserById} from "@/user/services/user.service";
 import UserEditForm from "@/user/components/UserEditForm";

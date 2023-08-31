@@ -41,8 +41,8 @@ const UserListItem: React.FC<UserListItemProps> = ({el}) => {
                     </Typography>
                 </Grid>
             </Grid>
-            <UserEditButton _id={el._id}/>
-            <UserRemoveButton _id={el._id}/>
+            {el._id && <UserEditButton _id={el._id}/>}
+            {el._id && <UserRemoveButton _id={el._id}/>}
         </Box>
     );
 };
