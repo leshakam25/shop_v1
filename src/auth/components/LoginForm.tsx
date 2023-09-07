@@ -8,10 +8,8 @@ const LoginForm = () => {
     const [password, setPassword] = useState<string>("");
     const [error] = useState<string>("")
 
-
     const handleSubmit = async (e: any) => {
-         e.preventDefault();
-
+        e.preventDefault();
     };
 
     return (
@@ -27,7 +25,7 @@ const LoginForm = () => {
                 borderRadius: 2
             }}>
                 <Typography variant={'h5'} sx={{
-                    opacity:0.6
+                    opacity: 0.6
                 }}>
                     Авторизация
                 </Typography>
