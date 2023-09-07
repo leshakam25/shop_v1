@@ -1,17 +1,22 @@
 "use client"
 import React from 'react';
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Button, Tooltip, Typography} from "@mui/material";
 import Link from "next/link";
 import {useSession} from "next-auth/react";
+import {usePathname} from "next/navigation";
+import LoginIcon from '@mui/icons-material/Login';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-const SignInButton = () => {
+export const SignInButton = () => {
     const {data: session} = useSession()
+    console.log(session)
 
     if (session && session.user) return (
         <Box sx={{
             my: 2,
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
             width: {xs: '100vw', sm: '200px'},
@@ -24,23 +29,42 @@ const SignInButton = () => {
                 {session.user.name}
             </Typography>
             <Link href={'/api/auth/signout'}>
-                <Button>Выйти</Button>
+                <Button
+                    variant={'contained'}
+                    color={"warning"}
+                    sx={{m: 0.5}}
+                >
+                    <LogoutIcon/>
+                </Button>
             </Link>
         </Box>
     )
+
     return (
         <Box sx={{
             my: 2,
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
             width: {xs: '100vw', sm: '200px'},
             gap: 1,
             borderRadius: 2
         }}>
-            <Link href={'/api/auth/signin'}>Sign In</Link>
-            <Link href={'/signup'}>Sign Up</Link>
+            <Link href={'/api/auth/signin'}>
+                <Button variant={'contained'} color={"primary"} sx={{m: 0.5}}>
+                    <Tooltip title={'Вход'}>
+                        <LoginIcon/>
+                    </Tooltip>
+                </Button>
+            </Link>
+            <Link href={'/signup'}>
+                <Tooltip title={'Регистрация'}>
+                    <Button variant={'contained'} color={"primary"} sx={{m: 0.5}}>
+                        <HistoryEduIcon/>
+                    </Button>
+                </Tooltip>
+            </Link>
         </Box>
     )
 }

@@ -2,15 +2,15 @@
 import React, {useState} from 'react';
 import {Alert, Box, Button, TextField, Typography} from "@mui/material";
 import Link from "next/link";
-
-const LoginForm = () => {
+const UserRegisterForm = () => {
+    const [name, setName] = useState<string>("")
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("");
     const [error] = useState<string>("")
 
     const handleSubmit = async (e: any) => {
-        e.preventDefault();
-    };
+        e.preventDefault()
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -25,10 +25,19 @@ const LoginForm = () => {
                 borderRadius: 2
             }}>
                 <Typography variant={'h5'} sx={{
-                    opacity: 0.6
+                    opacity:0.6
                 }}>
-                    Авторизация
+                    Регистрация
                 </Typography>
+                <TextField
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+                    type={'text'}
+                    value={name}
+                    label={'ФИО'}
+                    fullWidth
+                    variant={'outlined'}
+                    size={'small'}
+                />
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                     type={'email'}
@@ -36,7 +45,8 @@ const LoginForm = () => {
                     label={'Почта'}
                     fullWidth
                     variant={'outlined'}
-                    size={'small'}/>
+                    size={'small'}
+                />
                 <TextField
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                     type={'password'}
@@ -44,26 +54,33 @@ const LoginForm = () => {
                     label={'Пароль'}
                     fullWidth
                     variant={'outlined'}
-                    size={'small'}/>
+                    size={'small'}
+                />
                 <Button
                     type={"submit"}
                     fullWidth
                     variant={'contained'}
-                    color={'success'}>
-                    ВХОД
+                    color={'success'}
+                >
+                    РЕГИСТРАЦИЯ
                 </Button>
-                <Link href={`/auth/register/`}>
+                <Link href={`/auth/login/`}>
                     <Button
-                        sx={{width: {xs: '100vw', sm: '200px'}}}
+                        sx={{
+                            width: {xs: '100vw', sm: '200px'},
+                        }}
                         variant={'outlined'}
-                        color={'primary'}>
-                        РЕГИСТРАЦИЯ
+                        color={'primary'}
+                    >
+                        ВХОД
                     </Button>
                 </Link>
-                {error && <Alert severity="error">{error}</Alert>}
+                {error &&
+                    <Alert severity="error">{error}</Alert>
+                }
             </Box>
         </form>
     );
 };
 
-export default LoginForm;
+export default UserRegisterForm;
