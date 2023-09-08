@@ -1,7 +1,9 @@
 import {IUser} from "@/user/interfaces/user.interface";
 
+//БАЗОВЫЙ АДРЕС ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ
 const url = 'http://localhost:4000/user/'
 
+//ПОЛУЧЕНИЕ ВСЕХ ПОЛЬЗОВАТЕЛЕЙ
 export const getAllUsers = async (): Promise<IUser[] | undefined> => {
     try {
         const res = await fetch(url,
@@ -15,17 +17,18 @@ export const getAllUsers = async (): Promise<IUser[] | undefined> => {
     }
 }
 
+//СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ
 export const createUser = async (user: IUser) => {
-    const res = await fetch("http://localhost:4000/user", {
+    const {name, email, password, role} = user
+    const res = await fetch('/api/register', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(name, email, password, role)
     })
 
-    if (res.ok
-    ) {
+    if (res.ok) {
         alert('User created')
         return 'ok'
     } else {
@@ -34,6 +37,7 @@ export const createUser = async (user: IUser) => {
     }
 }
 
+//УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ
 export const removeUser = async (_id: string) => {
     const confirmed = confirm('Are you sure?')
     if (confirmed) {
@@ -41,6 +45,7 @@ export const removeUser = async (_id: string) => {
     }
 }
 
+//ПОЛУЧЕНИЕ ПОЛЬЗОВАТЕЛЯ ПО ID
 export const getUserById = async (_id: string) => {
     try {
         const res = await fetch(`${url}` + `${_id}`, {cache: 'no-store'})
@@ -50,8 +55,9 @@ export const getUserById = async (_id: string) => {
     }
 }
 
-export const editUser = async (_id:string,user: IUser) => {
-    await fetch(`http://localhost:4000/user/${_id}`, {
+//ИЗМЕНЕНИЕ ПОЛЬЗОВАТЕЛЯ ПО ID
+export const editUser = async (_id: string, user: IUser) => {
+    await fetch(`${url}` + `${_id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

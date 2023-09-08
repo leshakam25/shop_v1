@@ -37,7 +37,7 @@ const ProductsList: NextPage<any | undefined> = () => {
                     position: 'relative'
                 }}
             >
-                {products && products.map((el: Product) => (<ProductListItem key={el._id} el={el}/>))}
+                {/*{products && products.map((el: Product) => (<ProductListItem key={el._id} el={el}/>))}*/}
             </Box>
         </Box>
 

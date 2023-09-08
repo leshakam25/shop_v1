@@ -12,7 +12,7 @@ const Navigation = () => {
     const pathname = usePathname();
     const links: { label: string, href: string }[] = [
         {label: "Домой", href: '/'},
-        // {label: "Список товаров", href: '/products/list'},
+        {label: "Список товаров", href: '/products/list'},
         {label: "Список пользователей", href: '/user/list'},
     ]
 

@@ -30,7 +30,7 @@ const UserList = () => {
                 </Typography>
                 <UserCreateButton/>
             </Box>
-            {users && users.map((el: IUser) => <UserListItem key={el._id} el={el}/>)}
+            {/*{users && users.map((el: IUser) => <UserListItem key={el._id} el={el}/>)}*/}
         </Box>
     )
 }

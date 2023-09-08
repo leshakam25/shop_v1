@@ -2,7 +2,6 @@ import {Container} from "@mui/material";
 import Navigation from "@/shared/components/TheHeader/Navigation";
 import AuthBlock from "@/shared/components/TheHeader/AuthBlock";
 import React from "react";
-import {SignInButton} from "@/auth/components/SignInButton";
 
 const TheHeader = () => {
     return (
@@ -19,8 +18,7 @@ const TheHeader = () => {
                     py: 0.4
                 }}>
                 <Navigation/>
-                {/*<AuthBlock/>*/}
-                <SignInButton/>
+                <AuthBlock/>
             </Container>
         </header>
     );

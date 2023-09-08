@@ -11,5 +11,4 @@ const ProductListPage =  () => {
     return <ProductsList/>
 }
 
-
 export default ProductListPage;
